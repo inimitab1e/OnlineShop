@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">OnlineShop</string>
+    <string name="profile_menu_item">Profile menu item</string>
+    <string name="fragment4_menu_item">fragment4 menu item</string>
+    <string name="fragment3_menu_item">fragment3 menu item</string>
+    <string name="fragment2_menu_item">fragment2 menu item</string>
+    <string name="home_menu_item">Home menu item</string>
 </resources>
