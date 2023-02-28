@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.login.LoginFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="im login" />
+        android:id="@+id/tvLoginTitle"
+        style="@style/TextViewTitles"
+        android:text="@string/login_title_text"
+        app:layout_constraintBottom_toTopOf="@+id/loginGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/loginGroup"
+        android:layout_width="@dimen/width_register_group"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_group_margin_bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle">
+
+        <EditText
+            android:id="@+id/etLogFirstName"
+            style="@style/EditTextAuthGroup"
+            android:height="@dimen/edittext_auth_height"
+            android:background="@drawable/edit_text_auth_modifier"
+            android:hint="@string/edittext_first_name_hint" />
+
+        <TextView
+            android:id="@+id/tvLogFirstNameErrorMessage"
+            style="@style/TextViewAuthGroupErrors"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etLogPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/auth_group_edittext_margin_top"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLogPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_auth_modifier"
+                android:hint="@string/edittext_password_hint"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvLogPasswordErrorMessage"
+            style="@style/TextViewAuthGroupErrors"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/ButtonsBase"
+            android:layout_marginTop="@dimen/auth_group_edittext_margin_top"
+            android:background="@drawable/buttons_base_modifier"
+            android:text="@string/button_login_hint"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

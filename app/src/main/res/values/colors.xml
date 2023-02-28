@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="secondary_text_color">#808080</color>
+    <color name="have_acc_link_color">#254FE6</color>
+    <color name="edit_text_background_color">#0E60605B</color>
+    <color name="buttons_background_color">#4E55D7</color>
+    <color name="auth_error_message_color">#FF0000</color>
 </resources>

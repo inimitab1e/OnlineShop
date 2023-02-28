@@ -5,4 +5,16 @@
     <string name="fragment3_menu_item">fragment3 menu item</string>
     <string name="fragment2_menu_item">fragment2 menu item</string>
     <string name="home_menu_item">Home menu item</string>
+    <string name="register_title_text">Sign in</string>
+    <string name="edittext_first_name_hint">First name</string>
+    <string name="edittext_last_name_hint">Last name</string>
+    <string name="edittext_email_hint">Email</string>
+    <string name="button_create_acc_hint">Sign in</string>
+    <string name="have_acc_info_text">Already have an account?</string>
+    <string name="have_acc_link_text">Log in</string>
+    <string name="sign_in_with_google_text">Sign in with Google</string>
+    <string name="sign_in_with_apple_text">Sign in with Apple</string>
+    <string name="login_title_text">Welcome back</string>
+    <string name="edittext_password_hint">Password</string>
+    <string name="button_login_hint">Login</string>
 </resources>
