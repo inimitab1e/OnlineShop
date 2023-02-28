@@ -1,13 +1,11 @@
 package com.example.onlineshop.presentation.ui.registration
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.onlineshop.data.model.authentication.AuthenticationFormState
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,10 +13,8 @@ class RegistrationViewModel @Inject constructor(
     private val validationRepository: ValidationRepository
 ) : ViewModel() {
 
-    private val _errorValidationFormsMessage =
-        MutableSharedFlow<AuthenticationFormState>(1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
-    val errorValidationFormsMessage: SharedFlow<AuthenticationFormState> =
-        _errorValidationFormsMessage.asSharedFlow()
+    private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState>()
+    val errorValidationFormsMessage: LiveData<AuthenticationFormState> get() = _errorValidationFormsMessage
 
     fun validateAndRegister(firstName: String, lastName: String, email: String, password: String) {
         val emailResult = validationRepository.validateEmail(email)
@@ -27,14 +23,11 @@ class RegistrationViewModel @Inject constructor(
         val lastNameResult = validationRepository.validateNames(lastName)
 
         val hasError = listOf(
-            emailResult,
-            passwordResult,
-            firstNameResult,
-            lastNameResult
+            emailResult, passwordResult, firstNameResult, lastNameResult
         ).any { !it.successful }
 
         if (hasError) {
-            _errorValidationFormsMessage.tryEmit(
+            _errorValidationFormsMessage.postValue(
                 AuthenticationFormState(
                     emailError = emailResult.errorMessage,
                     passwordError = passwordResult.errorMessage,
@@ -43,7 +36,16 @@ class RegistrationViewModel @Inject constructor(
                 )
             )
         } else {
-            //TODO REGISTRATION
+            doRegistration(firstName, lastName, email, password)
         }
+    }
+
+    private fun doRegistration(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String
+    ) {
+
     }
 }

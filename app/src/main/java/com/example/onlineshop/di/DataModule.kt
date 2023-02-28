@@ -1,6 +1,8 @@
 package com.example.onlineshop.di
 
+import com.example.onlineshop.data.local.AppDatabase
 import com.example.onlineshop.data.repositories.ValidationRepositoryImpl
+import com.example.onlineshop.domain.local.AppDatabaseDAO
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.Module
 import dagger.Provides
@@ -11,6 +13,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    @Provides
+    @Singleton
+    fun provideAppDatabaseDao(db: AppDatabase): AppDatabaseDAO = db.AppDatabaseDAO()
 
     @Provides
     @Singleton

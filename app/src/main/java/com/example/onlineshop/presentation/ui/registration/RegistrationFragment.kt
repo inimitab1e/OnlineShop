@@ -59,7 +59,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private fun initValidationErrorsObserver() {
 
-        registrationViewModel.errorValidationFormsMessage.onEach { errorMessages ->
+        registrationViewModel.errorValidationFormsMessage.observe(viewLifecycleOwner) { errorMessages ->
             if (errorMessages.firstNameError != null) {
                 with(binding.tvFirstNameErrorMessage) {
                     isVisible = true
@@ -95,6 +95,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             } else {
                 binding.tvPasswordErrorMessage.isGone = true
             }
-        }.launchWhenResumed(lifecycleScope)
+        }
     }
 }
