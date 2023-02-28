@@ -33,11 +33,6 @@
             android:background="@drawable/edit_text_auth_modifier"
             android:hint="@string/edittext_first_name_hint" />
 
-        <TextView
-            android:id="@+id/tvLogFirstNameErrorMessage"
-            style="@style/TextViewAuthGroupErrors"
-            android:visibility="gone" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLogPasswordLayout"
             android:layout_width="match_parent"
@@ -56,11 +51,6 @@
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvLogPasswordErrorMessage"
-            style="@style/TextViewAuthGroupErrors"
-            android:visibility="gone" />
 
         <Button
             android:id="@+id/btnLogin"

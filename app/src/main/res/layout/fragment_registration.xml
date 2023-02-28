@@ -62,6 +62,31 @@
             style="@style/TextViewAuthGroupErrors"
             android:visibility="gone" />
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/auth_group_edittext_margin_top"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_auth_modifier"
+                android:hint="@string/edittext_password_hint"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvPasswordErrorMessage"
+            style="@style/TextViewAuthGroupErrors"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/btnCreateAccount"
             style="@style/ButtonsBase"
@@ -114,7 +139,7 @@
             android:src="@drawable/ic_google_48" />
 
         <TextView
-            android:id="@+id/tvLoginLink"
+            android:id="@+id/tvRegisterWithGoogle"
             style="@style/TextViewSignInWith"
             android:layout_gravity="center"
             android:autoLink="all"
@@ -139,7 +164,7 @@
             android:src="@drawable/ic_apple_48" />
 
         <TextView
-            android:id="@+id/tvLoinLink"
+            android:id="@+id/tvRegisterWithApple"
             style="@style/TextViewSignInWith"
             android:layout_gravity="center"
             android:autoLink="all"
