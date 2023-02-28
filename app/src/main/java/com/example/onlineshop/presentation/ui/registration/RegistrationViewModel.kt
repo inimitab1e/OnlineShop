@@ -46,6 +46,6 @@ class RegistrationViewModel @Inject constructor(
         email: String,
         password: String
     ) {
-
+        //TODO
     }
 }
