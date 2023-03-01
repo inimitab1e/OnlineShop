@@ -26,4 +26,12 @@
     <string name="base_profile_button_help_text">Help</string>
     <string name="base_profile_button_logout_text">logout</string>
     <string name="balance_value">$ 1593</string>
+    <string name="item_price_base_text">Item price</string>
+    <string name="item_name_base_text">Item name</string>
+    <string name="brand_name_base_text">Brand name</string>
+    <string name="sale_value_base_text">Sale value</string>
+    <string name="view_all_base_text">View all</string>
+    <string name="latest_base_text">Latest</string>
+    <string name="flash_sale_base_text">Flash Sale</string>
+    <string name="brands_base_text">Brands</string>
 </resources>

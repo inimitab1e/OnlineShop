@@ -13,4 +13,6 @@
     <color name="edit_text_background_color">#0E60605B</color>
     <color name="buttons_background_color">#4E55D7</color>
     <color name="auth_error_message_color">#FF0000</color>
+    <color name="search_view_background_color">#F5F6F7</color>
+    <color name="categories_for_items_background_color">#C4C4C4</color>
 </resources>

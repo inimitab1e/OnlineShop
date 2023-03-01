@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/LatestAndBrandsLayout"
+    android:layout_margin="@dimen/latest_item_layout_margin"
+    app:cardCornerRadius="@dimen/latest_item_layout_radius"
+    app:cardElevation="@dimen/latest_item_layout_elevation">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivLatestItemImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/teal_200"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvLatestBrandType"
+                android:background="@drawable/categories_text_for_items_modifier"
+                style="@style/TextViewLatestAndBrandsBrandName"
+                android:text="@string/brand_name_base_text"
+                android:padding="@dimen/latest_textviews_padding"
+                android:layout_margin="@dimen/latest_textviews_margin"
+                app:layout_constraintBottom_toTopOf="@+id/tvLatestItemName"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLatestItemName"
+                style="@style/TextViewSecondaryLatest"
+                android:text="@string/item_name_base_text"
+                android:padding="@dimen/latest_textviews_padding"
+                android:layout_margin="@dimen/latest_textviews_margin"
+                app:layout_constraintBottom_toTopOf="@+id/tvLatestItemPrice"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLatestItemPrice"
+                style="@style/TextViewSecondaryLatest"
+                android:text="@string/item_price_base_text"
+                android:padding="@dimen/latest_textviews_padding"
+                android:layout_margin="@dimen/latest_textviews_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibLatestAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/latest_textviews_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

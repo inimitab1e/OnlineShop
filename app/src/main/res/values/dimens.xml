@@ -17,4 +17,24 @@
     <dimen name="base_buttons_group_margin_top">10dp</dimen>
     <dimen name="balance_value_margin_end">50dp</dimen>
     <dimen name="profile_image_margin_top">5dp</dimen>
+    <dimen name="brand_item_layout_width">115dp</dimen>
+    <dimen name="brand_item_layout_height">150dp</dimen>
+    <dimen name="brand_item_layout_margin">10dp</dimen>
+    <dimen name="brand_item_layout_radius">10dp</dimen>
+    <dimen name="brand_item_layout_elevation">4dp</dimen>
+    <dimen name="latest_item_layout_margin">10dp</dimen>
+    <dimen name="latest_item_layout_radius">10dp</dimen>
+    <dimen name="latest_item_layout_elevation">4dp</dimen>
+    <dimen name="latest_textviews_padding">5dp</dimen>
+    <dimen name="latest_textviews_margin">5dp</dimen>
+    <dimen name="sale_layout_margin">10dp</dimen>
+    <dimen name="sale_layout_radius">10dp</dimen>
+    <dimen name="sale_layout_elevation">4dp</dimen>
+    <dimen name="sale_ltem_margin">5dp</dimen>
+    <dimen name="sale_ltem_padding">5dp</dimen>
+    <dimen name="sale_value_text_size">10sp</dimen>
+    <dimen name="sale_ltem_name_text_size">14sp</dimen>
+    <dimen name="sale_ltem_price_text_size">10sp</dimen>
+    <dimen name="home_margins_10">10dp</dimen>
+    <dimen name="home_margins_15">15dp</dimen>
 </resources>

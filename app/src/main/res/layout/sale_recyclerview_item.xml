@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/SalesLayout"
+    android:layout_margin="@dimen/sale_layout_margin"
+    app:cardCornerRadius="@dimen/sale_layout_radius"
+    app:cardElevation="@dimen/sale_layout_elevation">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivSaleItemImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/teal_200"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivSeller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_upload_24"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSaleValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                android:background="@drawable/categories_text_for_items_modifier"
+                android:padding="@dimen/sale_ltem_padding"
+                android:text="@string/sale_value_base_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sale_value_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSaleBrandType"
+                style="@style/TextViewSaleBrandName"
+                android:text="@string/brand_name_base_text"
+                android:padding="@dimen/sale_ltem_padding"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                android:background="@drawable/categories_text_for_items_modifier"
+                app:layout_constraintBottom_toTopOf="@+id/tvSaleItemName"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSaleItemName"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sale_ltem_name_text_size"
+                android:text="@string/item_name_base_text"
+                android:padding="@dimen/sale_ltem_padding"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                app:layout_constraintBottom_toTopOf="@+id/tvSaleItemPrice"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSaleItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sale_ltem_padding"
+                android:text="@string/item_price_base_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sale_ltem_price_text_size"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ibSaleAdd" />
+
+            <ImageButton
+                android:id="@+id/ibSaleAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sale_ltem_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>
