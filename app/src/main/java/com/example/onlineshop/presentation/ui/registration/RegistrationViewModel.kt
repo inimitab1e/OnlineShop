@@ -5,9 +5,6 @@ import com.example.onlineshop.data.model.authentication.AuthenticationFormState
 import com.example.onlineshop.domain.repositories.AuthenticationRepository
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,8 +21,8 @@ class RegistrationViewModel @Inject constructor(
     private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState?>()
     val errorValidationFormsMessage: LiveData<AuthenticationFormState?> get() = _errorValidationFormsMessage
 
-    private val _registrationResponse = MutableStateFlow("")
-    val registrationResponse: StateFlow<String> = _registrationResponse.asStateFlow()
+    private val _registrationResponse = MutableLiveData("")
+    val registrationResponse: LiveData<String?> get() = _registrationResponse
 
     fun validateAndRegister(firstName: String, lastName: String, email: String, password: String) {
         val emailResult = validationRepository.validateEmail(email)
@@ -58,8 +55,14 @@ class RegistrationViewModel @Inject constructor(
         password: String
     ) {
         viewModelScope.launch {
-            _registrationResponse.value =
-                authenticationRepository.initRegistration(firstName, lastName, email, password)
+            _registrationResponse.postValue(
+                authenticationRepository.initRegistration(
+                    firstName,
+                    lastName,
+                    email,
+                    password
+                )
+            )
         }
     }
 }

@@ -4,9 +4,11 @@ import android.content.Context
 import com.example.onlineshop.data.local.AppDatabase
 import com.example.onlineshop.data.local.PreferenceHelper
 import com.example.onlineshop.data.repositories.AuthenticationRepositoryImpl
+import com.example.onlineshop.data.repositories.ProfileRepositoryImpl
 import com.example.onlineshop.data.repositories.ValidationRepositoryImpl
 import com.example.onlineshop.domain.local.AppDatabaseDAO
 import com.example.onlineshop.domain.repositories.AuthenticationRepository
+import com.example.onlineshop.domain.repositories.ProfileRepository
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.Module
 import dagger.Provides
@@ -28,9 +30,22 @@ object DataModule {
         preferenceHelper: PreferenceHelper
     ): AuthenticationRepository =
         AuthenticationRepositoryImpl(
-            appDatabase = appDatabase,
+            appDatabaseDAO = appDatabase,
             ioDispatcher = ioDispatcher,
             preferenceHelper = preferenceHelper
+        )
+
+    @Provides
+    @Singleton
+    fun provideProfileRepository(
+        appDatabase: AppDatabaseDAO,
+        preferenceHelper: PreferenceHelper,
+        ioDispatcher: CoroutineDispatcher
+    ): ProfileRepository =
+        ProfileRepositoryImpl(
+            appDatabaseDAO = appDatabase,
+            preferenceHelper = preferenceHelper,
+            ioDispatcher = ioDispatcher
         )
 
     @Provides

@@ -6,15 +6,12 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentLoginBinding
 import com.example.onlineshop.domain.StringConstants
-import com.example.onlineshop.extensions.launchWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -42,7 +39,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         loginViewModel.loginWithPassword(email, password)
 
-        loginViewModel.loginResponse.onEach { loginResponseMessage ->
+        loginViewModel.loginResponse.observe(viewLifecycleOwner) { loginResponseMessage ->
             if (loginResponseMessage == StringConstants.loginSuccessfulMessage) {
                 binding.tvLoginErrorMessage.isGone = true
                 findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
@@ -52,6 +49,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     text = loginResponseMessage
                 }
             }
-        }.launchWhenStarted(lifecycleScope)
+        }
     }
 }

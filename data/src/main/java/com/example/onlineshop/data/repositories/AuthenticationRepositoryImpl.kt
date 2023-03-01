@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AuthenticationRepositoryImpl @Inject constructor(
-    private val appDatabase: AppDatabaseDAO,
+    private val appDatabaseDAO: AppDatabaseDAO,
     private val ioDispatcher: CoroutineDispatcher,
     private val preferenceHelper: PreferenceHelper
 ) : AuthenticationRepository {
@@ -22,10 +22,10 @@ class AuthenticationRepositoryImpl @Inject constructor(
         password: String
     ): String {
         return withContext(ioDispatcher) {
-            val isUserExists = appDatabase.checkIfUserExists(email)
+            val isUserExists = appDatabaseDAO.checkIfUserExists(email)
             if (!isUserExists) {
                 preferenceHelper.saveEmail(email)
-                appDatabase.tryRegistration(
+                appDatabaseDAO.tryRegistration(
                     Users(
                         firstName = firstName,
                         lastName = lastName,
@@ -42,7 +42,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
 
     override suspend fun initLogin(email: String, password: String): String {
         return withContext(ioDispatcher) {
-            val savedPassword = appDatabase.tryLoginWithPassword(email)
+            val savedPassword = appDatabaseDAO.tryLoginWithPassword(email)
                 ?: return@withContext StringConstants.userDoesNotExists
             if (password == savedPassword) {
                 return@withContext StringConstants.loginSuccessfulMessage
@@ -56,7 +56,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
         withContext(ioDispatcher) {
             val email = preferenceHelper.getEmail()
             checkNotNull(email)
-            appDatabase.deleteUserInfo(email)
+            appDatabaseDAO.deleteUserInfo(email)
             preferenceHelper.clearEmail()
         }
     }

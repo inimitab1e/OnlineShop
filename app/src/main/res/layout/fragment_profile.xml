@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,13 +11,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_marginTop="@dimen/profile_image_margin_top"
             android:layout_width="@dimen/profile_image_width"
             android:layout_height="@dimen/profile_image_length"
+            app:shapeAppearanceOverlay="@style/circleImageView"
             android:src="@drawable/ic_menu_profile_24"
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/tvChangePhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -24,6 +29,7 @@
             android:text="@string/change_photo_title"/>
 
         <TextView
+            android:id="@+id/tvUserName"
             android:layout_marginTop="@dimen/profile_name_margin_top"
             style="@style/TextViewSecondaryTitles"
             android:layout_gravity="center"
@@ -42,7 +48,7 @@
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLoout"
+            android:id="@+id/btnTradeStory"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:paddingEnd="@dimen/base_profile_buttons_padding_end"
@@ -53,7 +59,7 @@
             android:text="@string/base_profile_button_tradestory_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnt"
+            android:id="@+id/btnPayment"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:paddingEnd="@dimen/base_profile_buttons_padding_end"
@@ -63,7 +69,7 @@
             android:text="@string/base_profile_button_payment_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogou"
+            android:id="@+id/btnBalance"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:paddingEnd="@dimen/base_profile_buttons_padding_end"
@@ -73,7 +79,7 @@
             android:text="@string/base_profile_button_balance_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogut"
+            android:id="@+id/btnTrade"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:paddingEnd="@dimen/base_profile_buttons_padding_end"
@@ -83,7 +89,7 @@
             android:text="@string/base_profile_button_history_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btt"
+            android:id="@+id/btnRestore"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:paddingEnd="@dimen/base_profile_buttons_padding_end"
@@ -93,7 +99,7 @@
             android:text="@string/base_profile_button_restore_text" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bnLogou"
+            android:id="@+id/btnHelp"
             style="@style/ButtonsProfile"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:background="@color/white"

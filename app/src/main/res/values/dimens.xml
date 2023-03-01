@@ -15,4 +15,6 @@
     <dimen name="base_profile_buttons_padding_start">32dp</dimen>
     <dimen name="base_profile_buttons_padding_end">45dp</dimen>
     <dimen name="base_buttons_group_margin_top">10dp</dimen>
+    <dimen name="balance_value_margin_end">50dp</dimen>
+    <dimen name="profile_image_margin_top">5dp</dimen>
 </resources>

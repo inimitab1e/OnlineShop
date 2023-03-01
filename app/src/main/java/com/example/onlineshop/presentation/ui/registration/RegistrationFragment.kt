@@ -6,15 +6,12 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentRegistrationBinding
 import com.example.onlineshop.domain.StringConstants
-import com.example.onlineshop.extensions.launchWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
@@ -66,7 +63,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
         registrationViewModel.validateAndRegister(firstName, secondName, email, password)
 
-        registrationViewModel.registrationResponse.onEach { registrationResponseMessage ->
+        registrationViewModel.registrationResponse.observe(viewLifecycleOwner) { registrationResponseMessage ->
             if (registrationResponseMessage == StringConstants.registrationSuccessfulMessage) {
                 binding.tvPasswordErrorMessage.isGone = true
                 findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
@@ -76,7 +73,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                     isVisible = true
                 }
             }
-        }.launchWhenStarted(lifecycleScope)
+        }
     }
 
     private fun initValidationErrorsObserver() {

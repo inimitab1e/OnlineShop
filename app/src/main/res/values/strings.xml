@@ -25,4 +25,5 @@
     <string name="base_profile_button_restore_text">Restore Purchase</string>
     <string name="base_profile_button_help_text">Help</string>
     <string name="base_profile_button_logout_text">logout</string>
+    <string name="balance_value">$ 1593</string>
 </resources>
