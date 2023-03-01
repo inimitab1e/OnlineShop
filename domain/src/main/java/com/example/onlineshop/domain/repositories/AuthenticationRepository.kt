@@ -7,10 +7,14 @@ interface AuthenticationRepository {
         lastName: String,
         email: String,
         password: String
-    ): Boolean
+    ): String
 
     suspend fun initLogin(
-        firstName: String,
+        email: String,
         password: String
-    ): Boolean
+    ): String
+
+    suspend fun deleteLocalUser()
+
+    fun findLatestUser(): Boolean
 }

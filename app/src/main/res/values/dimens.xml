@@ -5,4 +5,14 @@
     <dimen name="auth_group_edittext_margin_top">30dp</dimen>
     <dimen name="have_acc_group_margin_top">10dp</dimen>
     <dimen name="login_group_margin_bottom">250dp</dimen>
+    <dimen name="profile_image_width">60dp</dimen>
+    <dimen name="profile_image_length">60dp</dimen>
+    <dimen name="profile_name_margin_top">18dp</dimen>
+    <dimen name="button_apload_item_width">300dp</dimen>
+    <dimen name="button_apload_item_padding_end">75dp</dimen>
+    <dimen name="button_apload_item_padding_start">55dp</dimen>
+    <dimen name="button_apload_item_margin_top">36dp</dimen>
+    <dimen name="base_profile_buttons_padding_start">32dp</dimen>
+    <dimen name="base_profile_buttons_padding_end">45dp</dimen>
+    <dimen name="base_buttons_group_margin_top">10dp</dimen>
 </resources>

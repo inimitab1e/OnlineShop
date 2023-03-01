@@ -1,20 +1,31 @@
 package com.example.onlineshop.presentation.ui.registration
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.onlineshop.data.model.authentication.AuthenticationFormState
+import com.example.onlineshop.domain.repositories.AuthenticationRepository
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
-    private val validationRepository: ValidationRepository
+    private val validationRepository: ValidationRepository,
+    private val authenticationRepository: AuthenticationRepository
 ) : ViewModel() {
 
-    private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState>()
-    val errorValidationFormsMessage: LiveData<AuthenticationFormState> get() = _errorValidationFormsMessage
+    val isLatestUserExists: LiveData<Boolean?> = liveData {
+        emit(authenticationRepository.findLatestUser())
+    }
+
+    private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState?>()
+    val errorValidationFormsMessage: LiveData<AuthenticationFormState?> get() = _errorValidationFormsMessage
+
+    private val _registrationResponse = MutableStateFlow("")
+    val registrationResponse: StateFlow<String> = _registrationResponse.asStateFlow()
 
     fun validateAndRegister(firstName: String, lastName: String, email: String, password: String) {
         val emailResult = validationRepository.validateEmail(email)
@@ -46,6 +57,9 @@ class RegistrationViewModel @Inject constructor(
         email: String,
         password: String
     ) {
-        //TODO
+        viewModelScope.launch {
+            _registrationResponse.value =
+                authenticationRepository.initRegistration(firstName, lastName, email, password)
+        }
     }
 }

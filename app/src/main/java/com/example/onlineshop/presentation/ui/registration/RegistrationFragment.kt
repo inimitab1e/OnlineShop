@@ -11,7 +11,8 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentRegistrationBinding
-import com.example.onlineshop.extensions.launchWhenResumed
+import com.example.onlineshop.domain.StringConstants
+import com.example.onlineshop.extensions.launchWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
 
@@ -24,8 +25,17 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        checkForLatestUser()
         initClickers()
         initValidationErrorsObserver()
+    }
+
+    private fun checkForLatestUser() {
+        registrationViewModel.isLatestUserExists.observe(viewLifecycleOwner) { isLatestUserExists ->
+            if (isLatestUserExists != null && isLatestUserExists) {
+                findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
+            }
+        }
     }
 
     private fun initClickers() {
@@ -55,11 +65,24 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         val password = binding.etPassword.text.toString()
 
         registrationViewModel.validateAndRegister(firstName, secondName, email, password)
+
+        registrationViewModel.registrationResponse.onEach { registrationResponseMessage ->
+            if (registrationResponseMessage == StringConstants.registrationSuccessfulMessage) {
+                binding.tvPasswordErrorMessage.isGone = true
+                findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
+            } else {
+                with(binding.tvPasswordErrorMessage) {
+                    text = registrationResponseMessage
+                    isVisible = true
+                }
+            }
+        }.launchWhenStarted(lifecycleScope)
     }
 
     private fun initValidationErrorsObserver() {
 
         registrationViewModel.errorValidationFormsMessage.observe(viewLifecycleOwner) { errorMessages ->
+            checkNotNull(errorMessages)
             if (errorMessages.firstNameError != null) {
                 with(binding.tvFirstNameErrorMessage) {
                     isVisible = true

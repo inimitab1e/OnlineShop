@@ -1,13 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.profile.ProfileFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:layout_width="@dimen/profile_image_width"
+            android:layout_height="@dimen/profile_image_length"
+            android:src="@drawable/ic_menu_profile_24"
+            android:layout_gravity="center"/>
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_m"
+            android:text="@string/change_photo_title"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/profile_name_margin_top"
+            style="@style/TextViewSecondaryTitles"
+            android:layout_gravity="center"
+            android:text="Satria Adhi Pradana"/>
+        
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/button_apload_item_width"
+            style="@style/ButtonsBase"
+            android:background="@drawable/buttons_base_modifier"
+            android:text="Upload item"
+            android:paddingEnd="@dimen/button_apload_item_padding_end"
+            android:paddingStart="@dimen/button_apload_item_padding_start"
+            android:layout_marginTop="@dimen/button_apload_item_margin_top"
+            android:drawableStart="@drawable/ic_upload_24"
+            android:layout_gravity="center"
+            android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoout"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            android:layout_marginTop="@dimen/base_buttons_group_margin_top"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_card_24"
+            android:drawableEnd="@drawable/ic_arrow_right_24"
+            android:text="@string/base_profile_button_tradestory_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnt"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_card_24"
+            android:drawableEnd="@drawable/ic_arrow_right_24"
+            android:text="@string/base_profile_button_payment_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogou"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_card_24"
+            android:drawableEnd="@drawable/ic_arrow_right_24"
+            android:text="@string/base_profile_button_balance_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogut"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_card_24"
+            android:drawableEnd="@drawable/ic_arrow_right_24"
+            android:text="@string/base_profile_button_history_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btt"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_refresh_24"
+            android:drawableEnd="@drawable/ic_arrow_right_24"
+            android:text="@string/base_profile_button_restore_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bnLogou"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_help_24"
+            android:text="@string/base_profile_button_help_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogout"
+            style="@style/ButtonsProfile"
+            android:paddingStart="@dimen/base_profile_buttons_padding_start"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ic_logout_24"
+            android:text="@string/base_profile_button_logout_text" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -17,4 +17,12 @@
     <string name="login_title_text">Welcome back</string>
     <string name="edittext_password_hint">Password</string>
     <string name="button_login_hint">Login</string>
+    <string name="change_photo_title">Change photo</string>
+    <string name="base_profile_button_tradestory_text">TradeStory</string>
+    <string name="base_profile_button_payment_text">Payment method</string>
+    <string name="base_profile_button_balance_text">Balance</string>
+    <string name="base_profile_button_history_text">Trade history</string>
+    <string name="base_profile_button_restore_text">Restore Purchase</string>
+    <string name="base_profile_button_help_text">Help</string>
+    <string name="base_profile_button_logout_text">logout</string>
 </resources>

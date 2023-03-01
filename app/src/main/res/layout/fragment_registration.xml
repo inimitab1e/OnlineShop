@@ -53,6 +53,7 @@
         <EditText
             android:id="@+id/etEmail"
             style="@style/EditTextAuthGroup"
+            android:inputType="textEmailAddress"
             android:layout_marginTop="@dimen/auth_group_edittext_margin_top"
             android:background="@drawable/edit_text_auth_modifier"
             android:hint="@string/edittext_email_hint" />
