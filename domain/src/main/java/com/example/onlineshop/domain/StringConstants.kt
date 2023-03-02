@@ -24,4 +24,8 @@ object StringConstants {
 
     //Ui error messages
     const val dataReceiveErrorMessage = "Data loading failed. Please try again"
+
+    //Secondary text
+    const val dollarChar = "$ "
+    const val salePercentText = "% off"
 }

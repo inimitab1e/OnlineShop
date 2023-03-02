@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.onlineshop.databinding.SaleRecyclerviewItemBinding
+import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.sale.FlashSale
 
 class SaleAdapter : RecyclerView.Adapter<SaleAdapter.SaleViewHolder>() {
@@ -41,9 +42,10 @@ class SaleAdapter : RecyclerView.Adapter<SaleAdapter.SaleViewHolder>() {
         val value = saleList[position]
         holder.categoryName.text = value.category
         holder.itemName.text = value.name
-        holder.itemPrice.text = value.price.toString()
+        val priceValue = StringConstants.dollarChar + value.price.toString()
+        holder.itemPrice.text = priceValue
         holder.itemImage.load(value.image_url)
-        val saleValue = value.discount.toString() + "% off"
+        val saleValue = value.discount.toString() + StringConstants.salePercentText
         holder.itemSaleValue.text = saleValue
     }
 }

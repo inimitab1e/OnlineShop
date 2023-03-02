@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/SalesLayout"
+    android:layout_margin="@dimen/sale_layout_margin"
+    app:cardCornerRadius="@dimen/sale_layout_radius"
+    app:cardElevation="@dimen/sale_layout_elevation"
+    app:cardBackgroundColor="@color/placeholders_background"/>

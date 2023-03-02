@@ -15,4 +15,5 @@
     <color name="auth_error_message_color">#FF0000</color>
     <color name="search_view_background_color">#F5F6F7</color>
     <color name="categories_for_items_background_color">#D9C4C4C4</color>
+    <color name="placeholders_background">#dddddd</color>
 </resources>

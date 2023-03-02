@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.onlineshop.databinding.LatestRecyclerviewItemBinding
+import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.latest.Latest
 
 class LatestAdapter : RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
@@ -40,7 +41,8 @@ class LatestAdapter : RecyclerView.Adapter<LatestAdapter.LatestViewHolder>() {
         val value = categoriesList[position]
         holder.categoryName.text = value.category
         holder.itemName.text = value.name
-        holder.itemPrice.text = value.price.toString()
+        val priceValue = StringConstants.dollarChar + value.price.toString()
+        holder.itemPrice.text = priceValue
         holder.itemImage.load(value.image_url)
     }
 }

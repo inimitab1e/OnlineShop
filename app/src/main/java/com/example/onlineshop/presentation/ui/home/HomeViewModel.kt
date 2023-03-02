@@ -10,6 +10,7 @@ import com.example.onlineshop.domain.repositories.HomePageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -38,11 +39,15 @@ class HomeViewModel @Inject constructor(
     private val _saleList = MutableLiveData<List<FlashSale>?>()
     val saleList: LiveData<List<FlashSale>?> get() = _saleList
 
+    private val _isDataReceivedSuccessfully = MutableLiveData(false)
+    val isDataReceivedSuccessfully: LiveData<Boolean?> get() = _isDataReceivedSuccessfully
+
     init {
         viewModelScope.launch {
             val latestAndSaleJobs = listOf(
                 viewModelScope.async {
                     latestResponse = homePageRepository.getLatestList()
+                    delay(5000)
                 },
                 viewModelScope.async {
                     saleResponse = homePageRepository.getSaleList()
@@ -54,6 +59,7 @@ class HomeViewModel @Inject constructor(
             } else {
                 _latestList.postValue(latestResponse)
                 _saleList.postValue(saleResponse)
+                _isDataReceivedSuccessfully.postValue(true)
             }
         }
     }

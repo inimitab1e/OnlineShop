@@ -3,6 +3,8 @@ package com.example.onlineshop.presentation.ui.home
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,6 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupLatestAndSaleRecyclerViewContent()
         setupBrandsRecyclerViewContent()
         setupErrorsObserver()
+        setupUiStateObserver()
     }
 
     private fun initRecyclerViews() {
@@ -99,6 +102,61 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             if (errorMessage != null) {
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun setupUiStateObserver() {
+        homeViewModel.isDataReceivedSuccessfully.observe(viewLifecycleOwner) { isReceived ->
+            if (isReceived != null && isReceived) {
+                with(binding) {
+                    rwLatest.isVisible = true
+                    rwFlashSale.isVisible = true
+                    rwBrands.isVisible = true
+
+                    shimmerLatest.isGone = true
+                    shimmerSale.isGone = true
+                    shimmerBrands.isGone = true
+                }
+                startShimmerAnimation()
+            } else {
+                with(binding) {
+                    rwLatest.isGone = true
+                    rwFlashSale.isGone = true
+                    rwBrands.isGone = true
+
+                    shimmerLatest.isVisible = true
+                    shimmerSale.isVisible = true
+                    shimmerBrands.isVisible = true
+                }
+                stopShimmerAnimation()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        startShimmerAnimation()
+    }
+
+    private fun startShimmerAnimation() {
+        with(binding) {
+            shimmerLatest.startShimmerAnimation()
+            shimmerSale.startShimmerAnimation()
+            shimmerBrands.startShimmerAnimation()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopShimmerAnimation()
+    }
+
+    private fun stopShimmerAnimation() {
+        with(binding) {
+            shimmerLatest.stopShimmerAnimation()
+            shimmerSale.stopShimmerAnimation()
+            shimmerBrands.stopShimmerAnimation()
         }
     }
 }
