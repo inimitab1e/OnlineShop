@@ -19,7 +19,7 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoriesViewH
     }
 
     fun setCategoriesItemList(list: CategoriesList) {
-        this.categoriesList = list.categories.toMutableList()
+        categoriesList = list.categories.toMutableList()
         notifyDataSetChanged()
     }
 

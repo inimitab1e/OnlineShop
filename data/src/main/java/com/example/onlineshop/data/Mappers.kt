@@ -1,11 +1,23 @@
 package com.example.onlineshop.data
 
+import com.example.onlineshop.data.model.brands.BrandDto
+import com.example.onlineshop.data.model.brands.BrandsListDto
 import com.example.onlineshop.data.model.categories.CategoriesListDto
 import com.example.onlineshop.data.model.categories.CategoryDto
+import com.example.onlineshop.data.model.latest.LatestDto
+import com.example.onlineshop.data.model.latest.LatestListDto
+import com.example.onlineshop.data.model.sale.FlashSaleDto
+import com.example.onlineshop.data.model.sale.SaleListDto
 import com.example.onlineshop.domain.local.entities.Users
 import com.example.onlineshop.domain.model.CurrentUserInfo
+import com.example.onlineshop.domain.model.brands.Brand
+import com.example.onlineshop.domain.model.brands.BrandsList
 import com.example.onlineshop.domain.model.categories.CategoriesList
 import com.example.onlineshop.domain.model.categories.Category
+import com.example.onlineshop.domain.model.latest.Latest
+import com.example.onlineshop.domain.model.latest.LatestList
+import com.example.onlineshop.domain.model.sale.FlashSale
+import com.example.onlineshop.domain.model.sale.SaleList
 
 fun Users.toCurrentUserInfo(): CurrentUserInfo = CurrentUserInfo(
     firstName = firstName ?: "first name",
@@ -19,4 +31,35 @@ fun CategoriesListDto.toCategoriesList() : CategoriesList = CategoriesList(
 fun CategoryDto.toCategory() : Category = Category(
     categoryName = categoryName,
     imageUrl = imageUrl
+)
+
+fun LatestListDto.toLatestList(): LatestList = LatestList(
+    latest = latest.map { item -> item.toLatest() }
+)
+
+fun LatestDto.toLatest(): Latest = Latest(
+    category = category,
+    image_url = image_url,
+    name = name,
+    price = price
+)
+
+fun SaleListDto.toSaleList(): SaleList = SaleList(
+    flash_sale = flash_sale.map { item -> item.toFlashSale() }
+)
+
+fun FlashSaleDto.toFlashSale(): FlashSale = FlashSale(
+    category = category,
+    discount = discount,
+    image_url = image_url,
+    name = name,
+    price = price
+)
+
+fun BrandsListDto.toBrandsList(): BrandsList = BrandsList(
+    brands = brands.map { value -> value.toBrand() }
+)
+
+fun BrandDto.toBrand(): Brand = Brand(
+    brandName = brandName
 )

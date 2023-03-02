@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvSaleBrandType"
+                android:id="@+id/tvSaleCategory"
                 style="@style/TextViewSaleBrandName"
                 android:text="@string/brand_name_base_text"
                 android:padding="@dimen/sale_ltem_padding"

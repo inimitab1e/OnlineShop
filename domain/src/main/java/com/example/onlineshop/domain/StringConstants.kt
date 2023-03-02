@@ -18,4 +18,10 @@ object StringConstants {
 
     //SharedPreference params
     const val emailKey = "Email"
+
+    //Network
+    const val baseUrl = "https://run.mocky.io/v3/"
+
+    //Ui error messages
+    const val dataReceiveErrorMessage = "Data loading failed. Please try again"
 }

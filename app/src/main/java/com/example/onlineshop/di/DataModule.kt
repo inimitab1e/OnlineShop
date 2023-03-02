@@ -3,6 +3,7 @@ package com.example.onlineshop.di
 import android.content.Context
 import com.example.onlineshop.data.local.AppDatabase
 import com.example.onlineshop.data.local.PreferenceHelper
+import com.example.onlineshop.data.network.ApiService
 import com.example.onlineshop.data.repositories.AuthenticationRepositoryImpl
 import com.example.onlineshop.data.repositories.HomePageRepositoryImpl
 import com.example.onlineshop.data.repositories.ProfileRepositoryImpl
@@ -54,11 +55,13 @@ object DataModule {
     @Singleton
     fun provideHomePageRepository(
         @ApplicationContext context: Context,
-        ioDispatcher: CoroutineDispatcher
+        ioDispatcher: CoroutineDispatcher,
+        apiService: ApiService
     ): HomePageRepository =
         HomePageRepositoryImpl(
             context = context,
-            ioDispatcher = ioDispatcher
+            ioDispatcher = ioDispatcher,
+            apiService = apiService
         )
 
     @Provides

@@ -9,9 +9,3 @@ fun <T> Flow<T>.launchWhenStarted(lifecycleScope: LifecycleCoroutineScope) {
         this@launchWhenStarted.collect()
     }
 }
-
-fun <T> Flow<T>.launchWhenResumed(lifecycleScope: LifecycleCoroutineScope) {
-    lifecycleScope.launchWhenResumed {
-        this@launchWhenResumed.collect()
-    }
-}

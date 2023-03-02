@@ -1,0 +1,19 @@
+{
+  "brands": [
+    {
+      "brandName": "Nike"
+    },
+    {
+      "brandName": "BMW"
+    },
+    {
+      "brandName": "Apple"
+    },
+    {
+      "brandName": "Gucci"
+    },
+    {
+      "brandName": "Mercedes"
+    }
+  ]
+}
