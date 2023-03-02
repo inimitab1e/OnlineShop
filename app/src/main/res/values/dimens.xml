@@ -37,4 +37,9 @@
     <dimen name="sale_ltem_price_text_size">10sp</dimen>
     <dimen name="home_margins_10">10dp</dimen>
     <dimen name="home_margins_15">15dp</dimen>
+    <dimen name="category_item_full_image_width">50dp</dimen>
+    <dimen name="category_item_full_image_height">50dp</dimen>
+    <dimen name="category_item_image_width">28dp</dimen>
+    <dimen name="category_item_image_height">28dp</dimen>
+    <dimen name="category_item_name_margin_top">5dp</dimen>
 </resources>

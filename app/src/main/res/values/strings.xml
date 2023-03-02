@@ -34,4 +34,8 @@
     <string name="latest_base_text">Latest</string>
     <string name="flash_sale_base_text">Flash Sale</string>
     <string name="brands_base_text">Brands</string>
+    <string name="profile_name_base_text">Satria Adhi Pradana</string>
+    <string name="btn_upload_item_text">Upload item</string>
+    <string name="searchview_hint_text">What are you looking for?</string>
+    <string name="category_name_base_text">Headphones</string>
 </resources>

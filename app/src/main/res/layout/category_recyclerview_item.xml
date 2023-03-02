@@ -2,24 +2,39 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="42dp"
-            android:layout_height="38dp"
-            android:src="@drawable/ic_card_24"/>
+        <FrameLayout
+            android:layout_width="@dimen/category_item_full_image_width"
+            android:layout_height="@dimen/category_item_full_image_height">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_item_image_background"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivCategoryImage"
+                android:layout_width="@dimen/category_item_image_width"
+                android:layout_height="@dimen/category_item_image_height"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_cars_24"/>
+
+        </FrameLayout>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="awffsefa"/>
+            android:id="@+id/tvCategoryName"
+            style="@style/TextViewCategoryName"
+            android:layout_marginTop="@dimen/category_item_name_margin_top"
+            android:text="@string/category_name_base_text"/>
 
     </LinearLayout>
 

@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "categoryName": "Phones",
+      "imageUrl": "ic_phones_24"
+    },
+    {
+      "categoryName": "Headphones",
+      "imageUrl": "ic_headphones_24"
+    },
+    {
+      "categoryName": "Games",
+      "imageUrl": "ic_games_24"
+    },
+    {
+      "categoryName": "Cars",
+      "imageUrl": "ic_cars_24"
+    },
+    {
+      "categoryName": "Furniture",
+      "imageUrl": "ic_furniture_24"
+    },
+    {
+      "categoryName": "Kids",
+      "imageUrl": "ic_kids_24"
+    }
+  ]
+}

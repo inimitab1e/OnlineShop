@@ -10,7 +10,7 @@
             android:id="@+id/buttonBalance"
             style="@style/ButtonsProfile"
             android:background="@color/white"
-            android:drawableStart="@drawable/ic_card_24"
+            android:drawableStart="@drawable/ic_profile_card_24"
             android:paddingStart="@dimen/base_profile_buttons_padding_start"
             android:stateListAnimator="@null"
             android:text="@string/base_profile_button_balance_text"

@@ -14,19 +14,20 @@
             android:id="@+id/searchBar"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/searchview_modifier"
+            android:layout_height="30dp"
+            android:theme="@style/SearchViewHome"
             app:iconifiedByDefault="false"
+            android:background="@drawable/searchview_modifier"
             app:queryBackground="@android:color/transparent"
-
-            app:queryHint="What are you looking for?"
+            app:queryHint="@string/searchview_hint_text"
             app:searchHintIcon="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/rwCategories"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categoriesGroup"
+            android:id="@+id/rwCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -35,29 +36,29 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
             android:layout_marginTop="@dimen/home_margins_10"
+            app:layout_constraintBottom_toTopOf="@id/tvLatest"
             app:layout_constraintTop_toBottomOf="@id/searchBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tvLatest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeTitlesText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginStart="@dimen/home_margins_10"
             android:text="@string/latest_base_text"
+            app:layout_constraintBottom_toTopOf="@id/rwLatest"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoriesGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/rwCategories" />
 
         <TextView
             android:id="@+id/tvLatestViewAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeHelpText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginEnd="@dimen/home_margins_15"
             android:text="@string/view_all_base_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoriesGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/rwCategories" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rwLatest"
@@ -67,25 +68,24 @@
             tools:listitem="@layout/latest_recyclerview_item"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
+            app:layout_constraintBottom_toTopOf="@id/tvFlashSale"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLatest" />
 
         <TextView
             android:id="@+id/tvFlashSale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeTitlesText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginStart="@dimen/home_margins_10"
             android:text="@string/flash_sale_base_text"
+            app:layout_constraintBottom_toTopOf="@id/rwFlashSale"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rwLatest" />
 
         <TextView
             android:id="@+id/tvFlashSaleViewAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeHelpText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginEnd="@dimen/home_margins_15"
             android:text="@string/view_all_base_text"
@@ -97,27 +97,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            tools:listitem="@layout/sale_recyclerview_item"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
+            app:layout_constraintBottom_toTopOf="@id/tvBrands"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlashSale" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFlashSale"
+            tools:listitem="@layout/sale_recyclerview_item" />
 
         <TextView
             android:id="@+id/tvBrands"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeTitlesText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginStart="@dimen/home_margins_10"
             android:text="@string/brands_base_text"
+            app:layout_constraintBottom_toTopOf="@id/rwBrands"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rwFlashSale" />
 
         <TextView
             android:id="@+id/tvBrandsViewAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextViewHomeHelpText"
             android:layout_marginTop="@dimen/home_margins_10"
             android:layout_marginEnd="@dimen/home_margins_15"
             android:text="@string/view_all_base_text"

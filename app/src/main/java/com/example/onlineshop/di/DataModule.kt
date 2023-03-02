@@ -4,10 +4,12 @@ import android.content.Context
 import com.example.onlineshop.data.local.AppDatabase
 import com.example.onlineshop.data.local.PreferenceHelper
 import com.example.onlineshop.data.repositories.AuthenticationRepositoryImpl
+import com.example.onlineshop.data.repositories.HomePageRepositoryImpl
 import com.example.onlineshop.data.repositories.ProfileRepositoryImpl
 import com.example.onlineshop.data.repositories.ValidationRepositoryImpl
 import com.example.onlineshop.domain.local.AppDatabaseDAO
 import com.example.onlineshop.domain.repositories.AuthenticationRepository
+import com.example.onlineshop.domain.repositories.HomePageRepository
 import com.example.onlineshop.domain.repositories.ProfileRepository
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import dagger.Module
@@ -45,6 +47,17 @@ object DataModule {
         ProfileRepositoryImpl(
             appDatabaseDAO = appDatabase,
             preferenceHelper = preferenceHelper,
+            ioDispatcher = ioDispatcher
+        )
+
+    @Provides
+    @Singleton
+    fun provideHomePageRepository(
+        @ApplicationContext context: Context,
+        ioDispatcher: CoroutineDispatcher
+    ): HomePageRepository =
+        HomePageRepositoryImpl(
+            context = context,
             ioDispatcher = ioDispatcher
         )
 

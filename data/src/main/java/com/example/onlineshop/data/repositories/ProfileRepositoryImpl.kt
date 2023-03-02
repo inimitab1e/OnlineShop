@@ -4,7 +4,7 @@ import com.example.onlineshop.data.local.PreferenceHelper
 import com.example.onlineshop.domain.local.AppDatabaseDAO
 import com.example.onlineshop.domain.model.CurrentUserInfo
 import com.example.onlineshop.domain.repositories.ProfileRepository
-import com.example.onlineshop.domain.toCurrentUserInfo
+import com.example.onlineshop.data.toCurrentUserInfo
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
