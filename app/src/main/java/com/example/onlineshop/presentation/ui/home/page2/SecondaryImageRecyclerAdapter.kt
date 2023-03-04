@@ -7,8 +7,8 @@ import coil.load
 import com.example.onlineshop.databinding.PickedSecondaryImagePagerItemBinding
 
 
-class SecondaryImagePagerAdapter :
-    RecyclerView.Adapter<SecondaryImagePagerAdapter.SecondaryImagePagerViewHolder>() {
+class SecondaryImageRecyclerAdapter :
+    RecyclerView.Adapter<SecondaryImageRecyclerAdapter.SecondaryImagePagerViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)

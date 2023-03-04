@@ -58,7 +58,7 @@
             style="@style/TextViewAuthGroupErrors"
             android:visibility="gone" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
             style="@style/ButtonsBase"
             android:layout_marginTop="@dimen/auth_group_edittext_margin_top"

@@ -38,4 +38,7 @@
     <string name="btn_upload_item_text">Upload item</string>
     <string name="searchview_hint_text">What are you looking for?</string>
     <string name="category_name_base_text">Headphones</string>
+    <string name="add_to_cart_button_layout_text">ADD TO CART</string>
+    <string name="end_price_text">0</string>
+    <string name="quantity_text">Quantity:</string>
 </resources>

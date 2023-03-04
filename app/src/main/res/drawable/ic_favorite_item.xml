@@ -7,7 +7,7 @@
         android:drawable="@drawable/ic_item_image_background" />
     <item
         android:gravity="center"
-        android:drawable="@drawable/ic_favorite"
+        android:drawable="@drawable/ic_favorite_15_11"
         android:width="15dp"
         android:height="15dp" />
 

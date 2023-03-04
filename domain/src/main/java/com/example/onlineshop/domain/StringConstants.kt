@@ -28,4 +28,10 @@ object StringConstants {
     //Secondary text
     const val dollarChar = "$ "
     const val salePercentText = "% off"
+    const val openBracket = "("
+    const val closedBracket = ")"
+    const val minimumEndPrice = "0"
+
+    //Colors
+    const val colorWhite = "#ffffff"
 }

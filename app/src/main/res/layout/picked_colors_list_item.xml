@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/colorsItemLayout"
+    android:layout_width="@dimen/color_item_width"
+    android:layout_height="@dimen/color_item_height"
+    android:layout_margin="@dimen/latest_item_layout_margin"
+    app:cardCornerRadius="@dimen/latest_item_layout_radius"
+    app:cardElevation="@dimen/color_item_card_elevation">
+
+    <ImageView
+        android:id="@+id/ivColorsItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/teal_200"/>
+
+</androidx.cardview.widget.CardView>

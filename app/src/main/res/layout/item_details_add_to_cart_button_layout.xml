@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/add_to_cart_button_layout_width"
+    android:layout_height="@dimen/add_to_cart_button_layout_height">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/buttons_base_modifier"
+        android:paddingEnd="@dimen/add_to_cart_button_layout_padding_end"
+        android:stateListAnimator="@null"
+        android:textSize="@dimen/add_to_cart_button_layout_text_size"
+        android:text="@string/add_to_cart_button_layout_text"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/white"
+         />
+
+    <TextView
+        android:id="@+id/tvEndPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/end_price_text_size"
+        android:text="@string/end_price_text"
+        android:layout_marginTop="@dimen/end_price_margin_top"
+        android:layout_marginStart="@dimen/end_price_margin_start"
+        android:textColor="@color/secondary_text_color"
+        android:fontFamily="@font/montserrat_b" />
+
+</FrameLayout>

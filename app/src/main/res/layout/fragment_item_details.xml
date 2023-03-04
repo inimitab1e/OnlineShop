@@ -6,29 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.home.page2.ItemDetailsFragment">
 
-    <FrameLayout
+    <include
         android:id="@+id/imageGroup"
-        android:layout_width="328dp"
-        android:layout_height="279dp"
-        android:layout_marginStart="-10dp"
-        android:layout_marginTop="-10dp"
+        layout="@layout/item_details_fragment_main_image_group_layout"
+        android:layout_width="@dimen/image_group_width"
+        android:layout_height="@dimen/image_group_height"
+        android:layout_marginStart="@dimen/image_group_negative_margin_10"
+        android:layout_marginTop="@dimen/image_group_negative_margin_10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vpMainImages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="22dp" />
-
-        <ImageView
-            android:layout_width="44dp"
-            android:layout_height="95dp"
-            android:layout_gravity="end|bottom"
-            android:layout_marginBottom="28dp"
-            android:src="@color/black" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rwSecondaryImages"
@@ -56,12 +42,24 @@
         app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
 
     <TextView
+        android:id="@+id/tvDollar"
+        style="@style/TextViewPickedItemsText"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="$ "
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+
+        app:layout_constraintEnd_toStartOf="@+id/tvPickedItemPrice"
+        app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+    <TextView
         android:id="@+id/tvPickedItemPrice"
         style="@style/TextViewPickedItemsText"
         android:layout_width="wrap_content"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="24dp"
-        android:text="$ 22,50"
+        android:text="22,50"
         android:textAlignment="viewEnd"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,15 +120,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivStar" />
 
-    <ImageButton
-        android:id="@+id/ibColor1"
-        android:layout_width="54dp"
-        android:layout_height="46dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rwColorsList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/picked_color_item_selector"
+        android:layout_marginStart="14dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        app:layout_constraintBottom_toTopOf="@+id/buttonsGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvColorTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvColorTitle"
+        tools:listitem="@layout/picked_colors_list_item" />
+
+    <include
+        android:id="@+id/buttonsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_details_buttons_group_height"
+        layout="@layout/item_details_fragment_buttons_group_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

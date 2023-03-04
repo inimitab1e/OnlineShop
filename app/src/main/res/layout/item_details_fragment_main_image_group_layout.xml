@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/image_group_width"
+    android:layout_height="@dimen/image_group_height">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpMainImages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/main_image_viewpager_margin_end" />
+
+    <LinearLayout
+        android:id="@+id/mainImageButtonsGroup"
+        android:layout_width="@dimen/main_image_buttons_width"
+        android:layout_height="@dimen/main_image_buttons_height"
+        android:layout_gravity="end|bottom"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/main_image_buttons_margin_bottom"
+        android:background="@drawable/main_images_buttons_group_modifier">
+
+        <ImageButton
+            android:id="@+id/btnMainImageFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_favorite_22_19" />
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="1dp"
+            android:src="@drawable/ic_line_16"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/btnMainImageShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_share_22" />
+
+
+    </LinearLayout>
+
+</FrameLayout>
