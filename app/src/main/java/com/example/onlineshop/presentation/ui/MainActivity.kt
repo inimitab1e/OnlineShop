@@ -24,10 +24,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
 
         setupNavigation()
-
     }
 
     private fun setupNavigation() {
+        binding.bottomNavigationView.itemIconTintList = null
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainer) as NavHostFragment
         navConrtoller = navHostFragment.navController

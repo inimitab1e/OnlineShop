@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_menu_home_24"
+        android:icon="@drawable/ic_menu_home_selector"
         android:title="@string/home_menu_item" />
 
     <item
@@ -22,6 +22,6 @@
 
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/ic_menu_profile_24"
+        android:icon="@drawable/ic_menu_profile_selector"
         android:title="@string/profile_menu_item" />
 </menu>
