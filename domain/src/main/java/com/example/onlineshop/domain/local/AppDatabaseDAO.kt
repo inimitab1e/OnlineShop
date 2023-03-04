@@ -20,7 +20,7 @@ interface AppDatabaseDAO {
     suspend fun tryLoginWithPassword(email: String): String?
 
     @Query("SELECT * from users where email = :email")
-    fun getAllUserInfo(email: String): Flow<Users>
+    fun getAllUserInfo(email: String): Users
 
     @Query("DELETE from users where email = :email")
     suspend fun deleteUserInfo(email: String)

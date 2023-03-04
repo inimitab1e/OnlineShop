@@ -6,16 +6,13 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.clear
 import coil.load
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentProfileBinding
-import com.example.onlineshop.extensions.launchWhenStarted
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -50,12 +47,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun observeInitialUiState() {
-        profileViewModel.initialUserInfo.onEach { currentUserInfo ->
-            val firstName = currentUserInfo.firstName
-            val lastName = currentUserInfo.lastName
-            val userName = "$firstName $lastName"
-            binding.tvUserName.text = userName
-        }.launchWhenStarted(lifecycleScope)
+        profileViewModel.initialUserInfo.observe(viewLifecycleOwner) { currentUserInfo ->
+            if (currentUserInfo != null) {
+                val firstName = currentUserInfo.firstName
+                val lastName = currentUserInfo.lastName
+                val userName = "$firstName $lastName"
+                binding.tvUserName.text = userName
+            }
+        }
     }
 
     private fun initClickers() {

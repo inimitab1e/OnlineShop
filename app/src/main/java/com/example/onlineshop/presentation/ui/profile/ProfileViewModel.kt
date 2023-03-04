@@ -1,6 +1,8 @@
 package com.example.onlineshop.presentation.ui.profile
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.onlineshop.domain.model.CurrentUserInfo
 import com.example.onlineshop.domain.repositories.AuthenticationRepository
@@ -19,23 +21,13 @@ class ProfileViewModel @Inject constructor(
     private val profileRepository: ProfileRepository
 ) : ViewModel() {
 
-    private val _initialUserInfo = MutableSharedFlow<CurrentUserInfo>(
-        replay = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-    val initialUserInfo: SharedFlow<CurrentUserInfo> = _initialUserInfo.asSharedFlow()
-
-    init {
-        viewModelScope.launch {
-            profileRepository.getCurrentUserInfo().collect { currentUserInfo ->
-                _initialUserInfo.tryEmit(currentUserInfo)
-            }
-        }
+    val initialUserInfo: LiveData<CurrentUserInfo?> = liveData {
+        emit(profileRepository.getCurrentUserInfo())
     }
 
     fun doLogout() {
         viewModelScope.launch {
-            authenticationRepository.deleteLocalUser()
+             authenticationRepository.deleteLocalUser()
         }
     }
 }

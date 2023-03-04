@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -17,11 +18,10 @@ class ProfileRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher
 ) : ProfileRepository {
 
-    override fun getCurrentUserInfo(): Flow<CurrentUserInfo> {
-        val email = preferenceHelper.getEmail()
-        checkNotNull(email)
-        return appDatabaseDAO.getAllUserInfo(email).map { userInfo ->
-            userInfo.toCurrentUserInfo()
-        }.flowOn(ioDispatcher)
-    }
+    override suspend fun getCurrentUserInfo(): CurrentUserInfo =
+        withContext(ioDispatcher) {
+            val email = preferenceHelper.getEmail()
+            checkNotNull(email)
+            return@withContext appDatabaseDAO.getAllUserInfo(email).toCurrentUserInfo()
+        }
 }

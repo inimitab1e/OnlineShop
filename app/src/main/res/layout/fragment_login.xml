@@ -32,7 +32,7 @@
             android:inputType="textEmailAddress"
             android:height="@dimen/edittext_auth_height"
             android:background="@drawable/edit_text_auth_modifier"
-            android:hint="@string/edittext_first_name_hint" />
+            android:hint="@string/edittext_email_hint" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLogPasswordLayout"

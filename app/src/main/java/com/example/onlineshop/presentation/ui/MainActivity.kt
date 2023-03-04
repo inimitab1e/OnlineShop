@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
 
         setupNavigation()
-        supportActionBar?.hide()
+
     }
 
     private fun setupNavigation() {

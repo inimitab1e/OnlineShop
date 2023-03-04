@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProfileRepository {
 
-    fun getCurrentUserInfo(): Flow<CurrentUserInfo>
+    suspend fun getCurrentUserInfo(): CurrentUserInfo
 }
