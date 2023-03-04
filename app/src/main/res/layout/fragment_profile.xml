@@ -30,11 +30,11 @@
 
         <TextView
             android:id="@+id/tvUserName"
-            android:layout_marginTop="@dimen/profile_name_margin_top"
             style="@style/TextViewSecondaryTitles"
             android:layout_gravity="center"
-            android:text="@string/profile_name_base_text"/>
-        
+            android:layout_marginTop="@dimen/profile_name_margin_top"
+            android:text="@string/profile_name_base_text" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/button_apload_item_width"
             style="@style/ButtonsBase"

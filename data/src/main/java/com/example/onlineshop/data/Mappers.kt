@@ -4,6 +4,7 @@ import com.example.onlineshop.data.model.brands.BrandDto
 import com.example.onlineshop.data.model.brands.BrandsListDto
 import com.example.onlineshop.data.model.categories.CategoriesListDto
 import com.example.onlineshop.data.model.categories.CategoryDto
+import com.example.onlineshop.data.model.description.ItemDescriptionDto
 import com.example.onlineshop.data.model.latest.LatestDto
 import com.example.onlineshop.data.model.latest.LatestListDto
 import com.example.onlineshop.data.model.sale.FlashSaleDto
@@ -14,6 +15,7 @@ import com.example.onlineshop.domain.model.brands.Brand
 import com.example.onlineshop.domain.model.brands.BrandsList
 import com.example.onlineshop.domain.model.categories.CategoriesList
 import com.example.onlineshop.domain.model.categories.Category
+import com.example.onlineshop.domain.model.description.ItemDescription
 import com.example.onlineshop.domain.model.latest.Latest
 import com.example.onlineshop.domain.model.latest.LatestList
 import com.example.onlineshop.domain.model.sale.FlashSale
@@ -24,11 +26,11 @@ fun Users.toCurrentUserInfo(): CurrentUserInfo = CurrentUserInfo(
     lastName = lastName ?: "last name"
 )
 
-fun CategoriesListDto.toCategoriesList() : CategoriesList = CategoriesList(
+fun CategoriesListDto.toCategoriesList(): CategoriesList = CategoriesList(
     categories = categories.map { item -> item.toCategory() }
 )
 
-fun CategoryDto.toCategory() : Category = Category(
+fun CategoryDto.toCategory(): Category = Category(
     categoryName = categoryName,
     imageUrl = imageUrl
 )
@@ -62,4 +64,14 @@ fun BrandsListDto.toBrandsList(): BrandsList = BrandsList(
 
 fun BrandDto.toBrand(): Brand = Brand(
     brandName = brandName
+)
+
+fun ItemDescriptionDto.toItemDescription(): ItemDescription = ItemDescription(
+    colors = colors,
+    description = description,
+    image_urls = image_urls,
+    name = name,
+    number_of_reviews = number_of_reviews,
+    price = price,
+    rating = rating
 )

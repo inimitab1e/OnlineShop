@@ -20,7 +20,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.onlineshop.presentation.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_itemDetailsFragment"
+            app:destination="@id/itemDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.onlineshop.presentation.ui.login.LoginFragment"
@@ -39,4 +43,9 @@
             android:id="@+id/action_profileFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.example.onlineshop.presentation.ui.home.page2.ItemDetailsFragment"
+        android:label="fragment_item_details"
+        tools:layout="@layout/fragment_item_details" />
 </navigation>

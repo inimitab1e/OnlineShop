@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.home.page2.ItemDetailsFragment">
+
+    <FrameLayout
+        android:id="@+id/imageGroup"
+        android:layout_width="328dp"
+        android:layout_height="279dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="-10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpMainImages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="22dp" />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="95dp"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="28dp"
+            android:src="@color/black" />
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rwSecondaryImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+
+        tools:listitem="@layout/picked_secondary_image_pager_item"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageGroup">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvPickedItemName"
+        style="@style/TextViewPickedItemsText"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="24dp"
+        android:text="New balance Sneakers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+    <TextView
+        android:id="@+id/tvPickedItemPrice"
+        style="@style/TextViewPickedItemsText"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="24dp"
+        android:text="$ 22,50"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+    <TextView
+        android:id="@+id/tvPickedItemDescription"
+        style="@style/TextViewPickedItemsSecondaryText"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:text="Features waterproof, fire, air resistant shoes. all changed when the country of fire attacked"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPickedItemName" />
+
+    <ImageView
+        android:id="@+id/ivStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_star_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+    <TextView
+        android:id="@+id/tvRatingValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_b"
+        android:text="3.9"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/ivStar"
+        app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+    <TextView
+        android:id="@+id/tvViewsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_b"
+        android:text="(4000 reviews)"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvRatingValue"
+        app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+    <TextView
+        android:id="@+id/tvColorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_b"
+        android:text="Color:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivStar" />
+
+    <ImageButton
+        android:id="@+id/ibColor1"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/picked_color_item_selector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvColorTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

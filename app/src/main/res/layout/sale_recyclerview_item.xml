@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/SalesLayout"
+    android:id="@+id/saleItemLayout"
     android:layout_margin="@dimen/sale_layout_margin"
     app:cardCornerRadius="@dimen/sale_layout_radius"
     app:cardElevation="@dimen/sale_layout_elevation">
@@ -82,6 +83,7 @@
                 android:id="@+id/ibFavourite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_favorite_item"
                 android:layout_margin="@dimen/sale_ltem_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ibSaleAdd" />
@@ -90,6 +92,7 @@
                 android:id="@+id/ibSaleAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_add_item"
                 android:layout_margin="@dimen/sale_ltem_margin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

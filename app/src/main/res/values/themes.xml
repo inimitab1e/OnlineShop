@@ -30,6 +30,21 @@
         <item name="fontFamily">@font/montserrat_b</item>
     </style>
 
+    <style name="TextViewPickedItemsText">
+        <item name="android:layout_width">185dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/montserrat_b</item>
+    </style>
+
+    <style name="TextViewPickedItemsSecondaryText">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/montserrat_b</item>
+    </style>
+
     <style name="TextViewSignInWith">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

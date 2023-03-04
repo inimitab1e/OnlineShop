@@ -52,6 +52,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.activity:activity-ktx:1.6.1'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     //Images
     implementation "io.coil-kt:coil:1.2.1"

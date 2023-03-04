@@ -10,15 +10,35 @@ import com.example.onlineshop.domain.model.sale.FlashSale
 
 class SaleAdapter : RecyclerView.Adapter<SaleAdapter.SaleViewHolder>() {
 
+    interface OnItemClickListener {
+        fun onItemClick()
+    }
+
+    private lateinit var mListener: OnItemClickListener
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mListener = listener
+    }
+
     var saleList = mutableListOf<FlashSale>()
 
-    class SaleViewHolder(binding: SaleRecyclerviewItemBinding) :
+    class SaleViewHolder(
+        binding: SaleRecyclerviewItemBinding,
+        clickListener: OnItemClickListener
+    ) :
         RecyclerView.ViewHolder(binding.root) {
+        val item = binding.saleItemLayout
         val categoryName = binding.tvSaleCategory
         val itemName = binding.tvSaleItemName
         val itemPrice = binding.tvSaleItemPrice
         val itemImage = binding.ivSaleItemImage
         val itemSaleValue = binding.tvSaleValue
+
+        init {
+            item.setOnClickListener {
+                clickListener.onItemClick()
+            }
+        }
     }
 
     fun setSaleItemList(list: List<FlashSale>) {
@@ -33,7 +53,7 @@ class SaleAdapter : RecyclerView.Adapter<SaleAdapter.SaleViewHolder>() {
                 viewGroup,
                 false
             )
-        return SaleViewHolder(binding)
+        return SaleViewHolder(binding, mListener)
     }
 
     override fun getItemCount() = saleList.size

@@ -43,4 +43,5 @@
     <dimen name="category_item_image_height">28dp</dimen>
     <dimen name="category_item_name_margin_top">5dp</dimen>
     <dimen name="brand_item_text_padding">5dp</dimen>
+    <dimen name="carousel_spacing">10dp</dimen>
 </resources>
