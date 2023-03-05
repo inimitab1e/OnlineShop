@@ -9,6 +9,7 @@ import com.example.onlineshop.data.model.latest.LatestDto
 import com.example.onlineshop.data.model.latest.LatestListDto
 import com.example.onlineshop.data.model.sale.FlashSaleDto
 import com.example.onlineshop.data.model.sale.SaleListDto
+import com.example.onlineshop.data.model.search.SearchResponseDto
 import com.example.onlineshop.domain.local.entities.Users
 import com.example.onlineshop.domain.model.CurrentUserInfo
 import com.example.onlineshop.domain.model.brands.Brand
@@ -20,6 +21,7 @@ import com.example.onlineshop.domain.model.latest.Latest
 import com.example.onlineshop.domain.model.latest.LatestList
 import com.example.onlineshop.domain.model.sale.FlashSale
 import com.example.onlineshop.domain.model.sale.SaleList
+import com.example.onlineshop.domain.model.search.SearchResponse
 
 fun Users.toCurrentUserInfo(): CurrentUserInfo = CurrentUserInfo(
     firstName = firstName ?: "first name",

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentHomeBinding
+import com.example.onlineshop.extensions.onTextChange
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,6 +33,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val brandsAdapter: BrandsAdapter by lazy(LazyThreadSafetyMode.NONE) {
         BrandsAdapter()
     }
+    private val searchAdapter: SearchAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        SearchAdapter()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupCategoriesRecyclerViewContent()
         setupLatestAndSaleRecyclerViewContent()
         setupBrandsRecyclerViewContent()
+        setupSearchRecyclerViewContent()
         setupErrorsObserver()
         setupUiStateObserver()
     }
@@ -70,6 +75,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = brandsAdapter
         }
+
+        binding.rwSearchResponseList.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = searchAdapter
+        }
     }
 
     private fun setupCategoriesRecyclerViewContent() {
@@ -98,6 +108,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         homeViewModel.brandsList.observe(viewLifecycleOwner) { brandsList ->
             if (brandsList != null) {
                 brandsAdapter.setBrandsItemList(brandsList)
+            }
+        }
+    }
+
+    private fun setupSearchRecyclerViewContent() {
+        binding.searchBar.onTextChange { query ->
+            if (query != null && query.isNotBlank()) {
+                homeViewModel.doSearchByQuery(query)
+            } else {
+                homeViewModel.stopSearching()
+                binding.rwSearchResponseList.isGone = true
+                binding.mainContent.isVisible = true
+            }
+        }
+
+        homeViewModel.searchResponseList.observe(viewLifecycleOwner) { searchResponse ->
+            if (searchResponse != null) {
+                if (searchResponse.searchResult.isEmpty()) {
+                    Toast.makeText(context, "We cant find anything", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.rwSearchResponseList.isVisible = true
+                    binding.mainContent.isGone = true
+                    searchAdapter.setSearchResponseList(searchResponse.searchResult)
+                }
             }
         }
     }

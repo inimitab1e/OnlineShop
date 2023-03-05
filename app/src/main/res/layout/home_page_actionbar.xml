@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_settings_24"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/home_actionbar_settings_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,19 +20,18 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_b"
         android:gravity="center"
-        android:padding="10sp"
+        android:padding="@dimen/home_actionbar_text_padding"
         android:text="@string/home_page_actionbar_title"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="@dimen/home_actionbar_text_size"
         app:layout_constraintEnd_toStartOf="@id/ivImage"
         app:layout_constraintStart_toEndOf="@+id/ibSettings"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
+        android:layout_width="@dimen/home_actionbar_image_width"
+        android:layout_height="@dimen/home_actionbar_image_height"
         android:src="@drawable/ic_menu_profile_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvTradeBy"
@@ -45,9 +44,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_b"
         android:gravity="center"
-        android:text="Location"
+        android:text="@string/location_text"
         android:textColor="@color/secondary_text_color"
-        android:textSize="12sp"
+        android:textSize="@dimen/home_actionbar_location_text_size"
         app:layout_constraintEnd_toStartOf="@id/ivDownArrow"
         app:layout_constraintStart_toStartOf="@+id/ivImage"
         app:layout_constraintTop_toBottomOf="@+id/ivImage" />
@@ -58,7 +57,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_down_arrow"
-        android:layout_margin="3dp"
+        android:layout_margin="@dimen/home_actionbar_arrow_margin"
         app:layout_constraintEnd_toEndOf="@+id/ivImage"
         app:layout_constraintStart_toEndOf="@+id/tvLocation"
         app:layout_constraintTop_toBottomOf="@+id/ivImage" />

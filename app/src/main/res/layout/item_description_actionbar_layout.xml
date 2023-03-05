@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    android:padding="20dp">
+    android:padding="@dimen/item_description_actionbar_padding">
 
     <ImageButton
         android:id="@+id/ibItemBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_back_half_arrow" />
 

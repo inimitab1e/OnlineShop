@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/search_response_item_layout_margin">
+
+    <TextView
+        android:id="@+id/tvSearchResponse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/search_response_item_text"
+        android:textSize="@dimen/search_response_item_text_size"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_m"
+        android:padding="@dimen/search_response_item_text_padding"
+        android:layout_marginStart="@dimen/search_response_item_text_margin_start"/>
+
+</androidx.cardview.widget.CardView>

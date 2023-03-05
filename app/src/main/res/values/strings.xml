@@ -49,4 +49,7 @@
     <string name="rating_text">3.9</string>
     <string name="views_text">(4000 reviews)</string>
     <string name="color_title_text">Color:</string>
+    <string name="location_text">Location</string>
+    <string name="profile_actionbar_title_text">Profile</string>
+    <string name="search_response_item_text">response</string>
 </resources>

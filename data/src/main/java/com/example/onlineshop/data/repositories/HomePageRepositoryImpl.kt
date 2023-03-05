@@ -14,6 +14,7 @@ import com.example.onlineshop.domain.model.latest.Latest
 import com.example.onlineshop.domain.model.latest.LatestList
 import com.example.onlineshop.domain.model.sale.FlashSale
 import com.example.onlineshop.domain.model.sale.SaleList
+import com.example.onlineshop.domain.model.search.SearchResponse
 import com.example.onlineshop.domain.repositories.HomePageRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -69,5 +70,19 @@ class HomePageRepositoryImpl(
             val objectItemType: Type = object : TypeToken<BrandsListDto>() {}.type
             val item = gson.fromJson<BrandsListDto>(jsonString, objectItemType)
             return@withContext item.toBrandsList()
+        }
+
+    override suspend fun doSearch(query: String): SearchResponse? =
+        withContext(ioDispatcher) {
+            val listOfWords = apiService.getRemoteListOfWords()
+            if (listOfWords.isSuccessful) {
+                return@withContext SearchResponse(
+                    searchResult = listOfWords.body()!!.words.filter { word ->
+                        word.startsWith(query, ignoreCase = true)
+                    }
+                )
+            } else {
+                return@withContext null
+            }
         }
 }

@@ -3,6 +3,7 @@ package com.example.onlineshop.data.network
 import com.example.onlineshop.data.model.description.ItemDescriptionDto
 import com.example.onlineshop.data.model.latest.LatestListDto
 import com.example.onlineshop.data.model.sale.SaleListDto
+import com.example.onlineshop.data.model.search.SearchResponseDto
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -16,4 +17,7 @@ interface ApiService {
 
     @GET("f7f99d04-4971-45d5-92e0-70333383c239")
     suspend fun getRemoteItemDescriptionData(): Response<ItemDescriptionDto>
+
+    @GET("4c9cd822-9479-4509-803d-63197e5a9e19")
+    suspend fun getRemoteListOfWords(): Response<SearchResponseDto>
 }

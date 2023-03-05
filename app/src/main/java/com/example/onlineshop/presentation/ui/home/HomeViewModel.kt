@@ -6,12 +6,10 @@ import com.example.onlineshop.domain.model.brands.BrandsList
 import com.example.onlineshop.domain.model.categories.CategoriesList
 import com.example.onlineshop.domain.model.latest.Latest
 import com.example.onlineshop.domain.model.sale.FlashSale
+import com.example.onlineshop.domain.model.search.SearchResponse
 import com.example.onlineshop.domain.repositories.HomePageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,6 +19,7 @@ class HomeViewModel @Inject constructor(
 
     private var latestResponse: List<Latest>? = null
     private var saleResponse: List<FlashSale>? = null
+    private var searchJob: Job? = null
 
     val categoriesList: LiveData<CategoriesList?> = liveData {
         emit(homePageRepository.getCategoriesList())
@@ -42,6 +41,9 @@ class HomeViewModel @Inject constructor(
     private val _isDataReceivedSuccessfully = MutableLiveData(false)
     val isDataReceivedSuccessfully: LiveData<Boolean?> get() = _isDataReceivedSuccessfully
 
+    private val _searchResponseList = MutableLiveData<SearchResponse?>()
+    val searchResponseList: LiveData<SearchResponse?> get() = _searchResponseList
+
     init {
         viewModelScope.launch {
             val latestAndSaleJobs = listOf(
@@ -60,6 +62,20 @@ class HomeViewModel @Inject constructor(
                 _saleList.postValue(saleResponse)
                 _isDataReceivedSuccessfully.postValue(true)
             }
+        }
+    }
+
+    fun doSearchByQuery(query: String) {
+        stopSearching()
+        searchJob = viewModelScope.launch {
+            delay(1000)
+            _searchResponseList.postValue(homePageRepository.doSearch(query))
+        }
+    }
+
+    fun stopSearching() {
+        if (searchJob?.isActive == true) {
+            searchJob?.cancel()
         }
     }
 }
