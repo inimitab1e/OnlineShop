@@ -3,6 +3,7 @@ package com.example.onlineshop.presentation.ui.profile
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -39,6 +40,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
         }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        initBackButtonPress()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -67,6 +74,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             tvChangePhoto.setOnClickListener {
                 pickImage.launch(MIMETYPE_IMAGES)
             }
+
+            profileActionbarLayout.ibBack.setOnClickListener {
+                activity?.finish()
+            }
+        }
+    }
+
+    private fun initBackButtonPress() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (childFragmentManager.backStackEntryCount > 0) {
+                childFragmentManager.popBackStack();
+            }
+            activity?.finish()
         }
     }
 }

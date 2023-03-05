@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,147 +7,165 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.home.page2.ItemDetailsFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/itemDetailsScrollLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp">
 
-        <include
-            android:id="@+id/imageGroup"
-            layout="@layout/item_details_fragment_main_image_group_layout"
-            android:layout_width="@dimen/image_group_width"
-            android:layout_height="@dimen/image_group_height"
-            android:layout_marginStart="@dimen/image_group_negative_margin_10"
-            android:layout_marginTop="@dimen/image_group_negative_margin_10"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rwSecondaryImages"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-
-            tools:listitem="@layout/picked_secondary_image_pager_item"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageGroup">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/tvPickedItemName"
-            style="@style/TextViewPickedItemsText"
-            android:layout_marginTop="21dp"
-            android:layout_marginStart="24dp"
-            android:text="New balance Sneakers"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
-
-        <TextView
-            android:id="@+id/tvDollar"
-            style="@style/TextViewPickedItemsText"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="21dp"
-            android:text="$ "
-            android:textAlignment="viewEnd"
-            android:textSize="16sp"
-
-            app:layout_constraintEnd_toStartOf="@+id/tvPickedItemPrice"
-            app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
-
-        <TextView
-            android:id="@+id/tvPickedItemPrice"
-            style="@style/TextViewPickedItemsText"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="24dp"
-            android:text="22,50"
-            android:textAlignment="viewEnd"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
-
-        <TextView
-            android:id="@+id/tvPickedItemDescription"
-            style="@style/TextViewPickedItemsSecondaryText"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:text="Features waterproof, fire, air resistant shoes. all changed when the country of fire attacked"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickedItemName" />
-
-        <ImageView
-            android:id="@+id/ivStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ic_star_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
-
-        <TextView
-            android:id="@+id/tvRatingValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/montserrat_b"
-            android:text="3.9"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/ivStar"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
-
-        <TextView
-            android:id="@+id/tvViewsNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/montserrat_b"
-            android:text="(4000 reviews)"
-            android:textAlignment="center"
-            app:layout_constraintStart_toEndOf="@+id/tvRatingValue"
-            app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
-
-        <TextView
-            android:id="@+id/tvColorTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/montserrat_b"
-            android:text="Color:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivStar" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rwColorsList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="14dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
-            app:layout_constraintBottom_toTopOf="@+id/buttonsGroup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvColorTitle"
-            tools:listitem="@layout/picked_colors_list_item" />
-
-        <include
-            android:id="@+id/buttonsGroup"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_details_buttons_group_height"
-            layout="@layout/item_details_fragment_buttons_group_layout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/imageGroup"
+                layout="@layout/item_details_fragment_main_image_group_layout"
+                android:layout_width="@dimen/image_group_width"
+                android:layout_height="@dimen/image_group_height"
+                android:layout_marginStart="@dimen/image_group_negative_margin_10"
+                android:layout_marginTop="@dimen/image_group_negative_margin_10"
+                app:layout_constraintBottom_toTopOf="@+id/rwSecondaryImages"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</ScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rwSecondaryImages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/secondary_images_list_margin_top"
+
+                tools:listitem="@layout/picked_secondary_image_pager_item"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                app:layout_constraintBottom_toTopOf="@+id/tvPickedItemName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageGroup">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tvPickedItemName"
+                style="@style/TextViewPickedItemsText"
+                android:layout_marginTop="@dimen/picked_item_name_margin_top"
+                android:layout_marginStart="@dimen/picked_item_name_margin_start"
+                android:text="@string/picked_item_name_base_text"
+                app:layout_constraintBottom_toTopOf="@+id/tvPickedItemDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+            <TextView
+                android:id="@+id/tvDollar"
+                style="@style/TextViewPickedItemsText"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/picked_item_price_margin_top"
+                android:text="@string/dollar_text"
+                android:textAlignment="viewEnd"
+                android:textSize="@dimen/dollar_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/tvPickedItemPrice"
+                app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+            <TextView
+                android:id="@+id/tvPickedItemPrice"
+                style="@style/TextViewPickedItemsText"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/picked_item_price_margin_top"
+                android:layout_marginEnd="@dimen/picked_item_price_margin_end"
+                android:text="@string/picked_item_text"
+                android:textAlignment="viewEnd"
+                android:textSize="@dimen/picked_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rwSecondaryImages" />
+
+            <TextView
+                android:id="@+id/tvPickedItemDescription"
+                style="@style/TextViewPickedItemsSecondaryText"
+                android:layout_marginStart="@dimen/picked_item_description_margin_start"
+                android:layout_marginTop="@dimen/picked_item_description_margin_end"
+                android:text="@string/picked_item_description_base_text"
+                app:layout_constraintBottom_toTopOf="@+id/ivStar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPickedItemName" />
+
+            <ImageView
+                android:id="@+id/ivStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/star_margin_start"
+                android:layout_marginTop="@dimen/star_margin_top"
+                android:src="@drawable/ic_star_24"
+                app:layout_constraintBottom_toTopOf="@+id/tvColorTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+            <TextView
+                android:id="@+id/tvRatingValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/rating_margin_start"
+                android:layout_marginTop="@dimen/rating_margin_top"
+                android:fontFamily="@font/montserrat_b"
+                android:text="@string/rating_text"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/ivStar"
+                app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+            <TextView
+                android:id="@+id/tvViewsNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/views_margin_start"
+                android:layout_marginTop="@dimen/views_margin_top"
+                android:fontFamily="@font/montserrat_b"
+                android:text="@string/views_text"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/tvRatingValue"
+                app:layout_constraintTop_toBottomOf="@+id/tvPickedItemDescription" />
+
+            <TextView
+                android:id="@+id/tvColorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/color_title_margin_start"
+                android:layout_marginTop="@dimen/color_title_margin_top"
+                android:fontFamily="@font/montserrat_b"
+                android:text="@string/color_title_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivStar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rwColorsList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/colors_list_margin_start"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                app:layout_constraintBottom_toTopOf="@+id/buttonsGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvColorTitle"
+                tools:listitem="@layout/picked_colors_list_item" />
+
+            <include
+                android:id="@+id/buttonsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_details_buttons_group_height"
+                layout="@layout/item_details_fragment_buttons_group_layout"
+                app:layout_constraintTop_toBottomOf="@+id/rwColorsList"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/itemDescriptionActionbarLayout"
+        layout="@layout/item_description_actionbar_layout" />
+
+</FrameLayout>

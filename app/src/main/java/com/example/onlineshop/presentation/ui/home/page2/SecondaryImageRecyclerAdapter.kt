@@ -32,6 +32,7 @@ class SecondaryImageRecyclerAdapter :
 
         init {
             item.setOnClickListener {
+
                 clickListener.onItemClick(position = absoluteAdapterPosition)
             }
         }

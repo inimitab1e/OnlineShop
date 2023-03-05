@@ -6,115 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.profile.ProfileFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivProfileImage"
-            android:layout_marginTop="@dimen/profile_image_margin_top"
-            android:layout_width="@dimen/profile_image_width"
-            android:layout_height="@dimen/profile_image_length"
-            app:shapeAppearanceOverlay="@style/circleImageView"
-            android:src="@drawable/ic_menu_profile_24"
-            android:layout_gravity="center"/>
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvChangePhoto"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/montserrat_m"
-            android:text="@string/change_photo_title"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvUserName"
-            style="@style/TextViewSecondaryTitles"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/profile_name_margin_top"
-            android:text="@string/profile_name_base_text" />
+            <include
+                android:id="@+id/profileActionbarLayout"
+                layout="@layout/profile_actionbar_layout"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/button_apload_item_width"
-            style="@style/ButtonsBase"
-            android:background="@drawable/buttons_base_modifier"
-            android:text="@string/btn_upload_item_text"
-            android:paddingEnd="@dimen/button_apload_item_padding_end"
-            android:paddingStart="@dimen/button_apload_item_padding_start"
-            android:layout_marginTop="@dimen/button_apload_item_margin_top"
-            android:drawableStart="@drawable/ic_upload_24"
-            android:layout_gravity="center"
-            android:textAllCaps="false"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_marginTop="@dimen/profile_image_margin_top"
+                android:layout_width="@dimen/profile_image_width"
+                android:layout_height="@dimen/profile_image_length"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                android:src="@drawable/ic_menu_profile_24"
+                android:layout_gravity="center"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTradeStory"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-            android:layout_marginTop="@dimen/base_buttons_group_margin_top"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_card_24"
-            android:drawableEnd="@drawable/ic_arrow_right_24"
-            android:text="@string/base_profile_button_tradestory_text" />
+            <TextView
+                android:id="@+id/tvChangePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_m"
+                android:text="@string/change_photo_title"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPayment"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+            <TextView
+                android:id="@+id/tvUserName"
+                style="@style/TextViewSecondaryTitles"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/profile_name_margin_top"
+                android:text="@string/profile_name_base_text" />
 
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_card_24"
-            android:drawableEnd="@drawable/ic_arrow_right_24"
-            android:text="@string/base_profile_button_payment_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="@dimen/button_apload_item_width"
+                style="@style/ButtonsBase"
+                android:background="@drawable/buttons_base_modifier"
+                android:text="@string/btn_upload_item_text"
+                android:paddingEnd="@dimen/button_apload_item_padding_end"
+                android:paddingStart="@dimen/button_apload_item_padding_start"
+                android:layout_marginTop="@dimen/button_apload_item_margin_top"
+                android:drawableStart="@drawable/ic_upload_24"
+                android:layout_gravity="center"
+                android:textAllCaps="false"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBalance"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_card_24"
-            android:drawableEnd="@drawable/ic_arrow_right_24"
-            android:text="@string/base_profile_button_balance_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTradeStory"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+                android:layout_marginTop="@dimen/base_buttons_group_margin_top"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_card_24"
+                android:drawableEnd="@drawable/ic_arrow_right_24"
+                android:text="@string/base_profile_button_tradestory_text" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTrade"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_card_24"
-            android:drawableEnd="@drawable/ic_arrow_right_24"
-            android:text="@string/base_profile_button_history_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPayment"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRestore"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_refresh_24"
-            android:drawableEnd="@drawable/ic_arrow_right_24"
-            android:text="@string/base_profile_button_restore_text" />
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_card_24"
+                android:drawableEnd="@drawable/ic_arrow_right_24"
+                android:text="@string/base_profile_button_payment_text" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnHelp"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_help_24"
-            android:text="@string/base_profile_button_help_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBalance"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_card_24"
+                android:drawableEnd="@drawable/ic_arrow_right_24"
+                android:text="@string/base_profile_button_balance_text" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogout"
-            style="@style/ButtonsProfile"
-            android:paddingStart="@dimen/base_profile_buttons_padding_start"
-            android:background="@color/white"
-            android:drawableStart="@drawable/ic_profile_logout_24"
-            android:text="@string/base_profile_button_logout_text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTrade"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_card_24"
+                android:drawableEnd="@drawable/ic_arrow_right_24"
+                android:text="@string/base_profile_button_history_text" />
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRestore"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_refresh_24"
+                android:drawableEnd="@drawable/ic_arrow_right_24"
+                android:text="@string/base_profile_button_restore_text" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnHelp"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_help_24"
+                android:text="@string/base_profile_button_help_text" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogout"
+                style="@style/ButtonsProfile"
+                android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                android:background="@color/white"
+                android:drawableStart="@drawable/ic_profile_logout_24"
+                android:text="@string/base_profile_button_logout_text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </ScrollView>

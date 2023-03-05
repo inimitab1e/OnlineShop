@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -130,6 +131,10 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
 
             buttonsGroup.btnAddToCartLayout.btnAddToCart.setOnClickListener {
                 Toast.makeText(context, "Items added in cart", Toast.LENGTH_SHORT).show()
+            }
+
+            itemDescriptionActionbarLayout.ibItemBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

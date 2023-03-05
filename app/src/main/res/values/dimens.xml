@@ -75,4 +75,22 @@
     <dimen name="button_add_to_cart_margin_start">21dp</dimen>
     <dimen name="button_add_to_cart_layout_margin_top">22dp</dimen>
     <dimen name="button_add_to_cart_layout_margin_end">23dp</dimen>
+    <dimen name="secondary_images_list_margin_top">25dp</dimen>
+    <dimen name="picked_item_name_margin_top">21dp</dimen>
+    <dimen name="picked_item_name_margin_start">24dp</dimen>
+    <dimen name="picked_item_price_margin_top">21dp</dimen>
+    <dimen name="picked_item_price_margin_end">24dp</dimen>
+    <dimen name="dollar_text_size">16sp</dimen>
+    <dimen name="picked_item_text_size">16sp</dimen>
+    <dimen name="picked_item_description_margin_start">24dp</dimen>
+    <dimen name="picked_item_description_margin_end">15dp</dimen>
+    <dimen name="star_margin_start">24dp</dimen>
+    <dimen name="star_margin_top">15dp</dimen>
+    <dimen name="rating_margin_start">3dp</dimen>
+    <dimen name="rating_margin_top">15dp</dimen>
+    <dimen name="views_margin_start">3dp</dimen>
+    <dimen name="views_margin_top">15dp</dimen>
+    <dimen name="color_title_margin_start">24dp</dimen>
+    <dimen name="color_title_margin_top">15dp</dimen>
+    <dimen name="colors_list_margin_start">14dp</dimen>
 </resources>
