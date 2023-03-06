@@ -11,10 +11,10 @@ import com.example.onlineshop.data.toLatest
 import com.example.onlineshop.domain.model.brands.BrandsList
 import com.example.onlineshop.domain.model.categories.CategoriesList
 import com.example.onlineshop.domain.model.latest.Latest
-import com.example.onlineshop.domain.model.latest.LatestList
+import com.example.onlineshop.domain.network_utils.result.Result
 import com.example.onlineshop.domain.model.sale.FlashSale
-import com.example.onlineshop.domain.model.sale.SaleList
 import com.example.onlineshop.domain.model.search.SearchResponse
+import com.example.onlineshop.domain.network_utils.result.asSuccess
 import com.example.onlineshop.domain.repositories.HomePageRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -41,23 +41,25 @@ class HomePageRepositoryImpl(
 
     override suspend fun getLatestList(): List<Latest>? =
         withContext(ioDispatcher) {
-            val response = apiService.getRemoteLatestData()
-            if (response.isSuccessful) {
-                return@withContext response.body()
-                    ?.latest?.map { value -> value.toLatest() }
-            } else {
-                return@withContext null
+            when (val response = apiService.getRemoteLatestData()) {
+                is Result.Success -> {
+                    return@withContext response.asSuccess().value.latest.map { value ->
+                        value.toLatest()
+                    }
+                }
+                is Result.Failure<*> -> return@withContext null
             }
         }
 
     override suspend fun getSaleList(): List<FlashSale>? =
         withContext(ioDispatcher) {
-            val response = apiService.getRemoteSaleData()
-            if (response.isSuccessful) {
-                return@withContext response.body()
-                    ?.flash_sale?.map { value -> value.toFlashSale() }
-            } else {
-                return@withContext null
+            when (val response = apiService.getRemoteSaleData()) {
+                is Result.Success -> {
+                    return@withContext response.asSuccess().value.flash_sale.map { value ->
+                        value.toFlashSale()
+                    }
+                }
+                is Result.Failure<*> -> return@withContext null
             }
         }
 
@@ -74,15 +76,14 @@ class HomePageRepositoryImpl(
 
     override suspend fun doSearch(query: String): SearchResponse? =
         withContext(ioDispatcher) {
-            val listOfWords = apiService.getRemoteListOfWords()
-            if (listOfWords.isSuccessful) {
-                return@withContext SearchResponse(
-                    searchResult = listOfWords.body()!!.words.filter { word ->
-                        word.startsWith(query, ignoreCase = true)
-                    }
-                )
-            } else {
-                return@withContext null
+            when (val listOfWords = apiService.getRemoteListOfWords()) {
+                is Result.Success -> {
+                    return@withContext SearchResponse(
+                        searchResult = listOfWords.asSuccess().value.words.filter { word ->
+                            word.startsWith(query, ignoreCase = true)
+                        })
+                }
+                is Result.Failure<*> -> return@withContext null
             }
         }
 }

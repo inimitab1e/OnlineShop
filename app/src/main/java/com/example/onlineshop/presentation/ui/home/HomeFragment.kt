@@ -3,6 +3,7 @@ package com.example.onlineshop.presentation.ui.home
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -48,6 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setupSearchRecyclerViewContent()
         setupErrorsObserver()
         setupUiStateObserver()
+        initBackButtonPress()
     }
 
     private fun initRecyclerViews() {
@@ -198,6 +200,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             shimmerLatest.stopShimmerAnimation()
             shimmerSale.stopShimmerAnimation()
             shimmerBrands.stopShimmerAnimation()
+        }
+    }
+
+    private fun initBackButtonPress() {
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (childFragmentManager.backStackEntryCount > 0) {
+                childFragmentManager.popBackStack()
+            }
+            activity?.finish()
         }
     }
 }

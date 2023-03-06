@@ -84,7 +84,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun initBackButtonPress() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             if (childFragmentManager.backStackEntryCount > 0) {
-                childFragmentManager.popBackStack();
+                childFragmentManager.popBackStack()
             }
             activity?.finish()
         }

@@ -22,7 +22,22 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initLoginResponseObserver()
         initClickers()
+    }
+
+    private fun initLoginResponseObserver() {
+        loginViewModel.loginResponse.observe(viewLifecycleOwner) { loginResponseMessage ->
+            if (loginResponseMessage == StringConstants.loginSuccessfulMessage) {
+                binding.tvLoginErrorMessage.isGone = true
+                findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
+            } else {
+                with(binding.tvLoginErrorMessage) {
+                    isVisible = true
+                    text = loginResponseMessage
+                }
+            }
+        }
     }
 
     private fun initClickers() {
@@ -38,17 +53,5 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val password = binding.etLogPassword.text.toString()
 
         loginViewModel.loginWithPassword(email, password)
-
-        loginViewModel.loginResponse.observe(viewLifecycleOwner) { loginResponseMessage ->
-            if (loginResponseMessage == StringConstants.loginSuccessfulMessage) {
-                binding.tvLoginErrorMessage.isGone = true
-                findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
-            } else {
-                with(binding.tvLoginErrorMessage) {
-                    isVisible = true
-                    text = loginResponseMessage
-                }
-            }
-        }
     }
 }

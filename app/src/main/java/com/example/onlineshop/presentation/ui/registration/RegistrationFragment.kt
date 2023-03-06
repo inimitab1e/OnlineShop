@@ -24,6 +24,21 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
         initClickers()
         initValidationErrorsObserver()
+        initRegistrationResponseObserver()
+    }
+
+    private fun initRegistrationResponseObserver() {
+        registrationViewModel.registrationResponse.observe(viewLifecycleOwner) { registrationResponseMessage ->
+            if (registrationResponseMessage == StringConstants.registrationSuccessfulMessage) {
+                binding.tvPasswordErrorMessage.isGone = true
+                findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
+            } else {
+                with(binding.tvPasswordErrorMessage) {
+                    text = registrationResponseMessage
+                    isVisible = true
+                }
+            }
+        }
     }
 
     private fun initClickers() {
@@ -53,18 +68,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         val password = binding.etPassword.text.toString()
 
         registrationViewModel.validateAndRegister(firstName, secondName, email, password)
-
-        registrationViewModel.registrationResponse.observe(viewLifecycleOwner) { registrationResponseMessage ->
-            if (registrationResponseMessage == StringConstants.registrationSuccessfulMessage) {
-                binding.tvPasswordErrorMessage.isGone = true
-                findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
-            } else {
-                with(binding.tvPasswordErrorMessage) {
-                    text = registrationResponseMessage
-                    isVisible = true
-                }
-            }
-        }
     }
 
     private fun initValidationErrorsObserver() {

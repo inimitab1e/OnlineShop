@@ -2,6 +2,7 @@ package com.example.onlineshop.di
 
 import com.example.onlineshop.data.network.ApiService
 import com.example.onlineshop.domain.StringConstants
+import com.example.onlineshop.domain.network_utils.retrofit.ResultAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,6 +27,7 @@ object NetworkModule {
         Retrofit.Builder()
             .baseUrl(StringConstants.baseUrl)
             .client(mOkHttpClient)
+            .addCallAdapterFactory(ResultAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
