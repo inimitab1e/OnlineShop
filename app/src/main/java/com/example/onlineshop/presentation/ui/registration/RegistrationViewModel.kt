@@ -14,8 +14,10 @@ class RegistrationViewModel @Inject constructor(
     private val authenticationRepository: AuthenticationRepository
 ) : ViewModel() {
 
-    val isLatestUserExists: LiveData<Boolean?> = liveData {
-        emit(authenticationRepository.findLatestUser())
+    init {
+        viewModelScope.launch {
+            authenticationRepository.clearPreferences()
+        }
     }
 
     private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState?>()

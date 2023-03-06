@@ -49,6 +49,7 @@ class HomeViewModel @Inject constructor(
             val latestAndSaleJobs = listOf(
                 viewModelScope.async {
                     latestResponse = homePageRepository.getLatestList()
+                    delay(5000)
                 },
                 viewModelScope.async {
                     saleResponse = homePageRepository.getSaleList()
@@ -68,7 +69,7 @@ class HomeViewModel @Inject constructor(
     fun doSearchByQuery(query: String) {
         stopSearching()
         searchJob = viewModelScope.launch {
-            delay(1000)
+            delay(searchDelay)
             _searchResponseList.postValue(homePageRepository.doSearch(query))
         }
     }
@@ -77,5 +78,9 @@ class HomeViewModel @Inject constructor(
         if (searchJob?.isActive == true) {
             searchJob?.cancel()
         }
+    }
+
+    companion object {
+        private const val searchDelay = 1000L
     }
 }

@@ -25,6 +25,12 @@ object StringConstants {
     //Ui error messages
     const val dataReceiveErrorMessage = "Data loading failed. Please try again"
 
+    //Ui hep messages
+    const val cantFindDataMessage = "We cant find anything"
+    const val itemsInCart = "Items added in cart"
+    const val addToFavoriteClicked = "Add to favorite clicked"
+    const val shareClicked = "Share clicked"
+
     //Secondary text
     const val dollarChar = "$ "
     const val salePercentText = "% off"

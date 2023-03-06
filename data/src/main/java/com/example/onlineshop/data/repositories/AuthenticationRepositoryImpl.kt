@@ -45,6 +45,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
             val savedPassword = appDatabaseDAO.tryLoginWithPassword(email)
                 ?: return@withContext StringConstants.userDoesNotExists
             if (password == savedPassword) {
+                preferenceHelper.saveEmail(email)
                 return@withContext StringConstants.loginSuccessfulMessage
             } else {
                 return@withContext StringConstants.loginFailedMessage
@@ -52,14 +53,9 @@ class AuthenticationRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteLocalUser() {
-        withContext(ioDispatcher) {
-            val email = preferenceHelper.getEmail()
-            checkNotNull(email)
-            appDatabaseDAO.deleteUserInfo(email)
-            preferenceHelper.clearEmail()
-        }
+    override fun deleteLocalUser() {
+        preferenceHelper.clearEmail()
     }
 
-    override fun findLatestUser(): Boolean = preferenceHelper.getEmail() != null
+    override suspend fun clearPreferences() = preferenceHelper.clearEmail()
 }

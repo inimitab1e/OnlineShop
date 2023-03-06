@@ -94,7 +94,7 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
         colorsPickerRecyclerAdapter.setOnItemClickListener(object :
             ColorsPickerRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                Toast.makeText(context, "Color $position picked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Color ${position + 1} picked", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -130,11 +130,20 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
             }
 
             buttonsGroup.btnAddToCartLayout.btnAddToCart.setOnClickListener {
-                Toast.makeText(context, "Items added in cart", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, StringConstants.itemsInCart, Toast.LENGTH_SHORT).show()
             }
 
             itemDescriptionActionbarLayout.ibItemBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+            imageGroup.btnMainImageFavorite.setOnClickListener {
+                Toast.makeText(context, StringConstants.addToFavoriteClicked, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            imageGroup.btnMainImageShare.setOnClickListener {
+                Toast.makeText(context, StringConstants.shareClicked, Toast.LENGTH_SHORT).show()
             }
         }
     }

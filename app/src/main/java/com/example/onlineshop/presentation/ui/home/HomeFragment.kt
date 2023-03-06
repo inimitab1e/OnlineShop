@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentHomeBinding
+import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.extensions.onTextChange
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -126,7 +127,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         homeViewModel.searchResponseList.observe(viewLifecycleOwner) { searchResponse ->
             if (searchResponse != null) {
                 if (searchResponse.searchResult.isEmpty()) {
-                    Toast.makeText(context, "We cant find anything", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, StringConstants.cantFindDataMessage, Toast.LENGTH_SHORT)
+                        .show()
                 } else {
                     binding.rwSearchResponseList.isVisible = true
                     binding.mainContent.isGone = true

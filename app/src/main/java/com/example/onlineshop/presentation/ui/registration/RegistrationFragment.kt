@@ -22,17 +22,8 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        checkForLatestUser()
         initClickers()
         initValidationErrorsObserver()
-    }
-
-    private fun checkForLatestUser() {
-        registrationViewModel.isLatestUserExists.observe(viewLifecycleOwner) { isLatestUserExists ->
-            if (isLatestUserExists != null && isLatestUserExists) {
-                findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
-            }
-        }
     }
 
     private fun initClickers() {

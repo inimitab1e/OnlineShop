@@ -14,7 +14,7 @@ interface AuthenticationRepository {
         password: String
     ): String
 
-    suspend fun deleteLocalUser()
+    fun deleteLocalUser()
 
-    fun findLatestUser(): Boolean
+    suspend fun clearPreferences()
 }
