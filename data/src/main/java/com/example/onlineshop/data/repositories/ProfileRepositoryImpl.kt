@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class ProfileRepositoryImpl @Inject constructor(
     private val appDatabaseDAO: AppDatabaseDAO,

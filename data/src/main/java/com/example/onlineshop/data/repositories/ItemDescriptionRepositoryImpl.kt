@@ -9,6 +9,7 @@ import com.example.onlineshop.domain.repositories.ItemDescriptionRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class ItemDescriptionRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher,

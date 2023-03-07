@@ -18,12 +18,15 @@ import com.example.onlineshop.domain.network_utils.result.asSuccess
 import com.example.onlineshop.domain.repositories.HomePageRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.lang.reflect.Type
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class HomePageRepositoryImpl(
-    private val context: Context,
+class HomePageRepositoryImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val ioDispatcher: CoroutineDispatcher,
     private val apiService: ApiService
 ) : HomePageRepository {

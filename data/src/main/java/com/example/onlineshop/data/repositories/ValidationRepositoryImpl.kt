@@ -4,8 +4,10 @@ import android.util.Patterns
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.authentication.ValidationResult
 import com.example.onlineshop.domain.repositories.ValidationRepository
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ValidationRepositoryImpl : ValidationRepository {
+class ValidationRepositoryImpl @Inject constructor() : ValidationRepository {
 
     override fun validateEmail(email: String): ValidationResult {
         return if (email.isBlank()) {
