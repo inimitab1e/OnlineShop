@@ -14,7 +14,7 @@ interface HomePageRepository {
 
     suspend fun getSaleList(): List<FlashSale>?
 
-    suspend fun getBrandsList(): BrandsList
+    suspend fun getBrandsList(): List<BrandsList>
 
     suspend fun doSearch(query: String): SearchResponse?
 }

@@ -8,7 +8,6 @@ import com.example.onlineshop.domain.repositories.AuthenticationRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class AuthenticationRepositoryImpl @Inject constructor(
     private val appDatabaseDAO: AppDatabaseDAO,

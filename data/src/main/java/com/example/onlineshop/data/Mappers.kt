@@ -37,19 +37,11 @@ fun CategoryDto.toCategory(): Category = Category(
     imageUrl = imageUrl
 )
 
-fun LatestListDto.toLatestList(): LatestList = LatestList(
-    latest = latest.map { item -> item.toLatest() }
-)
-
 fun LatestDto.toLatest(): Latest = Latest(
     category = category,
     image_url = image_url,
     name = name,
     price = price
-)
-
-fun SaleListDto.toSaleList(): SaleList = SaleList(
-    flash_sale = flash_sale.map { item -> item.toFlashSale() }
 )
 
 fun FlashSaleDto.toFlashSale(): FlashSale = FlashSale(

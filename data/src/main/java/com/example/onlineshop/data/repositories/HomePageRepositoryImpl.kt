@@ -23,7 +23,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.lang.reflect.Type
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class HomePageRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
@@ -66,7 +65,7 @@ class HomePageRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun getBrandsList(): BrandsList =
+    override suspend fun getBrandsList(): List<BrandsList> =
         withContext(ioDispatcher) {
             val jsonString = context.assets.open("brands.json")
                 .bufferedReader()
@@ -74,7 +73,7 @@ class HomePageRepositoryImpl @Inject constructor(
             val gson = Gson()
             val objectItemType: Type = object : TypeToken<BrandsListDto>() {}.type
             val item = gson.fromJson<BrandsListDto>(jsonString, objectItemType)
-            return@withContext item.toBrandsList()
+            return@withContext listOf(item.toBrandsList())
         }
 
     override suspend fun doSearch(query: String): SearchResponse? =

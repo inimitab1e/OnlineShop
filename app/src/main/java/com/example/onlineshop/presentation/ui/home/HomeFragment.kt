@@ -15,7 +15,9 @@ import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentHomeBinding
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.extensions.onTextChange
+import com.example.onlineshop.presentation.ui.AdapterDelegates
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -30,7 +32,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         LatestAdapter()
     }
     private val saleAdapter: SaleAdapter by lazy(LazyThreadSafetyMode.NONE) {
-        SaleAdapter()
+        SaleAdapter {
+            findNavController().navigate(R.id.action_homeFragment_to_itemDetailsFragment)
+        }
     }
     private val brandsAdapter: BrandsAdapter by lazy(LazyThreadSafetyMode.NONE) {
         BrandsAdapter()
@@ -68,12 +72,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             adapter = saleAdapter
         }
 
-        saleAdapter.setOnItemClickListener(object : SaleAdapter.OnItemClickListener {
-            override fun onItemClick() {
-                findNavController().navigate(R.id.action_homeFragment_to_itemDetailsFragment)
-            }
-        })
-
         binding.rwBrands.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = brandsAdapter
@@ -88,7 +86,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupCategoriesRecyclerViewContent() {
         homeViewModel.categoriesList.observe(viewLifecycleOwner) { categoriesList ->
             if (categoriesList != null) {
-                categoriesAdapter.setCategoriesItemList(categoriesList)
+                categoriesAdapter.items = categoriesList.categories
             }
         }
     }
@@ -96,13 +94,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupLatestAndSaleRecyclerViewContent() {
         homeViewModel.latestList.observe(viewLifecycleOwner) { latestList ->
             if (latestList != null) {
-                latestAdapter.setLatestItemList(latestList)
+                latestAdapter.items = latestList
             }
         }
 
         homeViewModel.saleList.observe(viewLifecycleOwner) { saleList ->
             if (saleList != null) {
-                saleAdapter.setSaleItemList(saleList)
+                saleAdapter.items = saleList
             }
         }
     }
@@ -110,7 +108,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupBrandsRecyclerViewContent() {
         homeViewModel.brandsList.observe(viewLifecycleOwner) { brandsList ->
             if (brandsList != null) {
-                brandsAdapter.setBrandsItemList(brandsList)
+                brandsAdapter.items = brandsList[0].brands
             }
         }
     }

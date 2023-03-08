@@ -25,7 +25,7 @@ class HomeViewModel @Inject constructor(
         emit(homePageRepository.getCategoriesList())
     }
 
-    val brandsList: LiveData<BrandsList?> = liveData {
+    val brandsList: LiveData<List<BrandsList>?> = liveData {
         emit(homePageRepository.getBrandsList())
     }
 
@@ -49,7 +49,6 @@ class HomeViewModel @Inject constructor(
             val latestAndSaleJobs = listOf(
                 viewModelScope.async {
                     latestResponse = homePageRepository.getLatestList()
-                    delay(5000)
                 },
                 viewModelScope.async {
                     saleResponse = homePageRepository.getSaleList()

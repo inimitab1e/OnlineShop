@@ -5,7 +5,6 @@ import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.authentication.ValidationResult
 import com.example.onlineshop.domain.repositories.ValidationRepository
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class ValidationRepositoryImpl @Inject constructor() : ValidationRepository {
 
