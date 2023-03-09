@@ -1,4 +1,4 @@
-package com.example.onlineshop.domain.network_utils.retrofit
+package com.example.onlineshop.data.network.utils.retrofit
 
 import okhttp3.Request
 import retrofit2.Call

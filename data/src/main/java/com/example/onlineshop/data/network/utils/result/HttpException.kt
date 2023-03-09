@@ -1,4 +1,4 @@
-package com.example.onlineshop.domain.network_utils.result
+package com.example.onlineshop.data.network.utils.result
 
 class HttpException(
     val statusCode: Int,

@@ -3,7 +3,7 @@ package com.example.onlineshop.di
 import android.content.Context
 import com.example.onlineshop.data.local.AppDatabase
 import com.example.onlineshop.data.local.PreferenceHelper
-import com.example.onlineshop.domain.local.AppDatabaseDAO
+import com.example.onlineshop.data.local.AppDatabaseDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

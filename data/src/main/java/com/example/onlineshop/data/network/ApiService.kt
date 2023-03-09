@@ -1,6 +1,6 @@
 package com.example.onlineshop.data.network
 
-import com.example.onlineshop.domain.network_utils.result.Result
+import com.example.onlineshop.data.network.utils.result.Result
 import com.example.onlineshop.data.model.description.ItemDescriptionDto
 import com.example.onlineshop.data.model.latest.LatestListDto
 import com.example.onlineshop.data.model.sale.SaleListDto

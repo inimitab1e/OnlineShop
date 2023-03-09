@@ -1,4 +1,4 @@
-package com.example.onlineshop.domain.local
+package com.example.onlineshop.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete

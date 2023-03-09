@@ -15,9 +15,7 @@ import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentHomeBinding
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.extensions.onTextChange
-import com.example.onlineshop.presentation.ui.AdapterDelegates
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {

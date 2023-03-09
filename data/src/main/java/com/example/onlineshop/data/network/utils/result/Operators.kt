@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.example.onlineshop.domain.network_utils.result
+package com.example.onlineshop.data.network.utils.result
 
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract

@@ -11,10 +11,10 @@ import com.example.onlineshop.data.toLatest
 import com.example.onlineshop.domain.model.brands.BrandsList
 import com.example.onlineshop.domain.model.categories.CategoriesList
 import com.example.onlineshop.domain.model.latest.Latest
-import com.example.onlineshop.domain.network_utils.result.Result
+import com.example.onlineshop.data.network.utils.result.Result
 import com.example.onlineshop.domain.model.sale.FlashSale
 import com.example.onlineshop.domain.model.search.SearchResponse
-import com.example.onlineshop.domain.network_utils.result.asSuccess
+import com.example.onlineshop.data.network.utils.result.asSuccess
 import com.example.onlineshop.domain.repositories.HomePageRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

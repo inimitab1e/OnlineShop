@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.example.onlineshop.domain.network_utils.result
+package com.example.onlineshop.data.network.utils.result
 
 sealed class Result<out T> {
 
@@ -17,7 +17,7 @@ sealed class Result<out T> {
             override val statusCode: Int,
             override val statusMessage: String? = null,
             override val url: String? = null
-        ) : Success<T>(), com.example.onlineshop.domain.network_utils.result.HttpResponse
+        ) : Success<T>(), com.example.onlineshop.data.network.utils.result.HttpResponse
 
         object Empty : Success<Nothing>() {
 

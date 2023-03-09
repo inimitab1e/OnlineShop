@@ -1,6 +1,6 @@
-package com.example.onlineshop.domain.network_utils.retrofit
+package com.example.onlineshop.data.network.utils.retrofit
 
-import com.example.onlineshop.domain.network_utils.result.Result
+import com.example.onlineshop.data.network.utils.result.Result
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

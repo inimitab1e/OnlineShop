@@ -1,7 +1,7 @@
-package com.example.onlineshop.domain.network_utils.retrofit
+package com.example.onlineshop.data.network.utils.retrofit
 
-import com.example.onlineshop.domain.network_utils.result.HttpException
-import com.example.onlineshop.domain.network_utils.result.Result
+import com.example.onlineshop.data.network.utils.result.HttpException
+import com.example.onlineshop.data.network.utils.result.Result
 import okio.Timeout
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,14 +30,14 @@ internal class ResultCall<T>(proxy: Call<T>) : CallDelegate<T, Result<T>>(proxy)
                     value = response.body() as T,
                     statusCode = response.code(),
                     statusMessage = response.message(),
-                    url = call.request().url().toString(),
+                    url = call.request().url.toString(),
                 )
             } else {
                 result = Result.Failure.HttpError(
                     HttpException(
                         statusCode = response.code(),
                         statusMessage = response.message(),
-                        url = call.request().url().toString(),
+                        url = call.request().url.toString(),
                     )
                 )
             }
