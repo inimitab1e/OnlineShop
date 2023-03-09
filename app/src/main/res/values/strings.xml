@@ -41,7 +41,7 @@
     <string name="category_name_base_text">Headphones</string>
     <string name="add_to_cart_button_layout_text">ADD TO CART</string>
     <string name="end_price_text">0</string>
-    <string name="quantity_text">Quantity:</string>
+    <string name="quantity_text">Quantity:  </string>
     <string name="picked_item_name_base_text">New balance Sneakers</string>
     <string name="dollar_text">$</string>
     <string name="picked_item_text">22,50</string>
@@ -53,4 +53,5 @@
     <string name="profile_actionbar_title_text">Profile</string>
     <string name="search_response_item_text">response</string>
     <string name="balance_value_text">$ 1593</string>
+    <string name="quantity_value_default_text">0</string>
 </resources>

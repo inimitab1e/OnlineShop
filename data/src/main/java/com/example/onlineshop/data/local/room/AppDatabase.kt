@@ -1,4 +1,4 @@
-package com.example.onlineshop.data.local
+package com.example.onlineshop.data.local.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

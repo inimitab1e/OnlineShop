@@ -15,6 +15,18 @@ fun String.removeFromEndPrice(itemPrice: String): String {
     }
 }
 
+fun String.addOneItem(): String {
+    return (this.toInt() + 1).toString()
+}
+
+fun String.removeOneItem(): String {
+    return if (this.toInt() - 1 >= 0) {
+        (this.toInt() - 1).toString()
+    } else {
+        this
+    }
+}
+
 inline fun SearchView.onTextChange(crossinline listener: (String?) -> Unit) {
     this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
         override fun onQueryTextSubmit(query: String?): Boolean {

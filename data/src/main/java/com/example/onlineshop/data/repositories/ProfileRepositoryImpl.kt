@@ -1,7 +1,7 @@
 package com.example.onlineshop.data.repositories
 
 import com.example.onlineshop.data.local.PreferenceHelper
-import com.example.onlineshop.data.local.AppDatabaseDAO
+import com.example.onlineshop.data.local.room.AppDatabaseDAO
 import com.example.onlineshop.domain.model.CurrentUserInfo
 import com.example.onlineshop.domain.repositories.ProfileRepository
 import com.example.onlineshop.data.toCurrentUserInfo

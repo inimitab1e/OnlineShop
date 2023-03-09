@@ -45,9 +45,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerViews()
-        setupCategoriesRecyclerViewContent()
-        setupLatestAndSaleRecyclerViewContent()
-        setupBrandsRecyclerViewContent()
+        setupRecyclerViewsWithContent()
         setupSearchRecyclerViewContent()
         setupErrorsObserver()
         setupUiStateObserver()
@@ -81,15 +79,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setupCategoriesRecyclerViewContent() {
+    private fun setupRecyclerViewsWithContent() {
         homeViewModel.categoriesList.observe(viewLifecycleOwner) { categoriesList ->
             if (categoriesList != null) {
                 categoriesAdapter.items = categoriesList.categories
             }
         }
-    }
 
-    private fun setupLatestAndSaleRecyclerViewContent() {
         homeViewModel.latestList.observe(viewLifecycleOwner) { latestList ->
             if (latestList != null) {
                 latestAdapter.items = latestList
@@ -101,9 +97,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 saleAdapter.items = saleList
             }
         }
-    }
 
-    private fun setupBrandsRecyclerViewContent() {
         homeViewModel.brandsList.observe(viewLifecycleOwner) { brandsList ->
             if (brandsList != null) {
                 brandsAdapter.items = brandsList[0].brands
@@ -125,8 +119,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         homeViewModel.searchResponseList.observe(viewLifecycleOwner) { searchResponse ->
             if (searchResponse != null) {
                 if (searchResponse.searchResult.isEmpty()) {
-                    Toast.makeText(context, StringConstants.cantFindDataMessage, Toast.LENGTH_SHORT)
-                        .show()
+                    showToast(StringConstants.cantFindDataMessage)
                 } else {
                     binding.rwSearchResponseList.isVisible = true
                     binding.mainContent.isGone = true
@@ -139,7 +132,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupErrorsObserver() {
         homeViewModel.loadDataErrorMessage.observe(viewLifecycleOwner) { errorMessage ->
             if (errorMessage != null) {
-                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                showToast(errorMessage)
             }
         }
     }
@@ -206,5 +199,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             activity?.finish()
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

@@ -29,7 +29,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun initLoginResponseObserver() {
         loginViewModel.loginResponse.observe(viewLifecycleOwner) { loginResponseMessage ->
             if (loginResponseMessage == StringConstants.loginSuccessfulMessage) {
-                binding.tvLoginErrorMessage.isGone = true
+                clearErrorMessages()
                 findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
             } else {
                 with(binding.tvLoginErrorMessage) {
@@ -41,10 +41,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun initClickers() {
-        with(binding) {
-            btnLogin.setOnClickListener {
-                doLogin()
-            }
+        binding.btnLogin.setOnClickListener {
+            doLogin()
         }
     }
 

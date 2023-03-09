@@ -15,8 +15,10 @@ import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentItemDetailsBinding
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.description.ItemDescription
+import com.example.onlineshop.extensions.addOneItem
 import com.example.onlineshop.extensions.addToEndPrice
 import com.example.onlineshop.extensions.removeFromEndPrice
+import com.example.onlineshop.extensions.removeOneItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +40,6 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
     ) {
         ColorsPickerRecyclerAdapter()
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,7 +63,6 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
     }
 
     private fun initMainImagePager() {
-
         binding.imageGroup.vpMainImages.apply {
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
             adapter = mainImagePagerAdapter
@@ -94,7 +94,7 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
         colorsPickerRecyclerAdapter.setOnItemClickListener(object :
             ColorsPickerRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                Toast.makeText(context, "Color ${position + 1} picked", Toast.LENGTH_SHORT).show()
+                showToast("Color ${position + 1} picked")
             }
         })
     }
@@ -116,21 +116,31 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
         with(binding) {
             buttonsGroup.ibAddToCart.setOnClickListener {
                 val itemPrice = binding.tvPickedItemPrice.text.toString()
-                binding.buttonsGroup.btnAddToCartLayout.tvEndPrice.text =
-                    binding.buttonsGroup.btnAddToCartLayout.tvEndPrice.text.toString()
-                        .addToEndPrice(itemPrice)
+                with(binding) {
+                    buttonsGroup.tvQuantityValue.text =
+                        buttonsGroup.tvQuantityValue.text.toString().addOneItem()
+
+                    buttonsGroup.btnAddToCartLayout.tvEndPrice.text =
+                        buttonsGroup.btnAddToCartLayout.tvEndPrice.text.toString()
+                            .addToEndPrice(itemPrice)
+                }
             }
 
             buttonsGroup.ibRemoveFromCart.setOnClickListener {
                 setupRemoveButtonUiActivity()
                 val itemPrice = binding.tvPickedItemPrice.text.toString()
-                binding.buttonsGroup.btnAddToCartLayout.tvEndPrice.text =
-                    binding.buttonsGroup.btnAddToCartLayout.tvEndPrice.text.toString()
-                        .removeFromEndPrice(itemPrice)
+                with(binding) {
+                    buttonsGroup.tvQuantityValue.text =
+                        buttonsGroup.tvQuantityValue.text.toString().removeOneItem()
+
+                    buttonsGroup.btnAddToCartLayout.tvEndPrice.text =
+                        buttonsGroup.btnAddToCartLayout.tvEndPrice.text.toString()
+                            .removeFromEndPrice(itemPrice)
+                }
             }
 
             buttonsGroup.btnAddToCartLayout.btnAddToCart.setOnClickListener {
-                Toast.makeText(context, StringConstants.itemsInCart, Toast.LENGTH_SHORT).show()
+                showToast(StringConstants.itemsInCart)
             }
 
             itemDescriptionActionbarLayout.ibItemBack.setOnClickListener {
@@ -138,12 +148,11 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
             }
 
             imageGroup.btnMainImageFavorite.setOnClickListener {
-                Toast.makeText(context, StringConstants.addToFavoriteClicked, Toast.LENGTH_SHORT)
-                    .show()
+                showToast(StringConstants.addToFavoriteClicked)
             }
 
             imageGroup.btnMainImageShare.setOnClickListener {
-                Toast.makeText(context, StringConstants.shareClicked, Toast.LENGTH_SHORT).show()
+                showToast(StringConstants.shareClicked)
             }
         }
     }
@@ -160,5 +169,9 @@ class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
                 colorFilter = null
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

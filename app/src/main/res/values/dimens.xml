@@ -110,4 +110,7 @@
     <dimen name="search_response_item_text_margin_start">10dp</dimen>
     <dimen name="balance_value_text_size">16sp</dimen>
     <dimen name="profile_buttons_margin_top">10dp</dimen>
+    <dimen name="quantity_text_margin_start">24dp</dimen>
+    <dimen name="quantity_text_margin_top">14dp</dimen>
+    <dimen name="quantity_value_text_margin_top">14dp</dimen>
 </resources>

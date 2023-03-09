@@ -1,4 +1,4 @@
-package com.example.onlineshop.data.local
+package com.example.onlineshop.data.local.room
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
