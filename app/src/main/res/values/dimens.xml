@@ -108,4 +108,6 @@
     <dimen name="search_response_item_text_size">18sp</dimen>
     <dimen name="search_response_item_text_padding">5dp</dimen>
     <dimen name="search_response_item_text_margin_start">10dp</dimen>
+    <dimen name="balance_value_text_size">16sp</dimen>
+    <dimen name="profile_buttons_margin_top">10dp</dimen>
 </resources>

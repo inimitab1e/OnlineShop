@@ -62,7 +62,7 @@
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
                 android:paddingEnd="@dimen/base_profile_buttons_padding_end"
                 android:layout_marginTop="@dimen/base_buttons_group_margin_top"
-                android:background="@color/white"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_card_24"
                 android:drawableEnd="@drawable/ic_arrow_right_24"
                 android:text="@string/base_profile_button_tradestory_text" />
@@ -72,28 +72,48 @@
                 style="@style/ButtonsProfile"
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
                 android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_card_24"
                 android:drawableEnd="@drawable/ic_arrow_right_24"
                 android:text="@string/base_profile_button_payment_text" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnBalance"
-                style="@style/ButtonsProfile"
-                android:paddingStart="@dimen/base_profile_buttons_padding_start"
-                android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-                android:background="@color/white"
-                android:drawableStart="@drawable/ic_profile_card_24"
-                android:drawableEnd="@drawable/ic_arrow_right_24"
-                android:text="@string/base_profile_button_balance_text" />
+            <FrameLayout
+                android:id="@+id/balanceButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnBalance"
+                    style="@style/ButtonsProfile"
+                    android:paddingStart="@dimen/base_profile_buttons_padding_start"
+                    android:paddingEnd="@dimen/base_profile_buttons_padding_end"
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_profile_card_24"
+                    android:stateListAnimator="@null"
+                    android:text="@string/base_profile_button_balance_text" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/base_profile_buttons_padding_end"
+                    android:layout_gravity="center|end"
+                    android:fontFamily="@font/montserrat_m"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/balance_value_text_size"
+                    android:text="@string/balance_value_text"/>
+
+            </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnTrade"
                 style="@style/ButtonsProfile"
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
                 android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_card_24"
                 android:drawableEnd="@drawable/ic_arrow_right_24"
                 android:text="@string/base_profile_button_history_text" />
@@ -103,7 +123,8 @@
                 style="@style/ButtonsProfile"
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
                 android:paddingEnd="@dimen/base_profile_buttons_padding_end"
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_refresh_24"
                 android:drawableEnd="@drawable/ic_arrow_right_24"
                 android:text="@string/base_profile_button_restore_text" />
@@ -112,7 +133,8 @@
                 android:id="@+id/btnHelp"
                 style="@style/ButtonsProfile"
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_help_24"
                 android:text="@string/base_profile_button_help_text" />
 
@@ -120,7 +142,8 @@
                 android:id="@+id/btnLogout"
                 style="@style/ButtonsProfile"
                 android:paddingStart="@dimen/base_profile_buttons_padding_start"
-                android:background="@color/white"
+                android:layout_marginTop="@dimen/profile_buttons_margin_top"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_profile_logout_24"
                 android:text="@string/base_profile_button_logout_text" />
 

@@ -52,4 +52,5 @@
     <string name="location_text">Location</string>
     <string name="profile_actionbar_title_text">Profile</string>
     <string name="search_response_item_text">response</string>
+    <string name="balance_value_text">$ 1593</string>
 </resources>
