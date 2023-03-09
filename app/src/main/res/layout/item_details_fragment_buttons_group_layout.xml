@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/quantity_value_text_margin_top"
+            android:layout_marginStart="@dimen/quantity_value_text_margin_start"
             android:fontFamily="@font/montserrat_m"
             android:text="@string/quantity_value_default_text"
             android:textColor="@color/white"
