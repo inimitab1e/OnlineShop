@@ -13,15 +13,9 @@ interface AppDatabaseDAO {
     @Insert()
     suspend fun tryRegistration(userInfo: Users)
 
-    @Query("SELECT EXISTS(SELECT * FROM users where email = :email)")
-    suspend fun checkIfUserExists(email: String): Boolean
+    @Query("SELECT EXISTS(SELECT * FROM users where firstName = :firstName)")
+    suspend fun checkIfUserExists(firstName: String): Boolean
 
-    @Query("SELECT password from users where email = :email")
-    suspend fun tryLoginWithPassword(email: String): String?
-
-    @Query("SELECT * from users where email = :email")
-    fun getAllUserInfo(email: String): Users
-
-    @Query("DELETE from users where email = :email")
-    suspend fun deleteUserInfo(email: String)
+    @Query("SELECT * from users where firstName = :firstName")
+    fun getAllUserInfo(firstName: String): Users
 }

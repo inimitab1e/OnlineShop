@@ -17,8 +17,8 @@ class ProfileRepositoryImpl @Inject constructor(
 
     override suspend fun getCurrentUserInfo(): CurrentUserInfo =
         withContext(ioDispatcher) {
-            val email = preferenceHelper.getEmail()
-            checkNotNull(email)
-            return@withContext appDatabaseDAO.getAllUserInfo(email).toCurrentUserInfo()
+            val firstName = preferenceHelper.getFirstName()
+            checkNotNull(firstName)
+            return@withContext appDatabaseDAO.getAllUserInfo(firstName).toCurrentUserInfo()
         }
 }

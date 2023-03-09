@@ -27,7 +27,7 @@ class ProfileViewModel @Inject constructor(
 
     fun doLogout() {
         viewModelScope.launch {
-             authenticationRepository.deleteLocalUser()
+             authenticationRepository.clearPreferences()
         }
     }
 }

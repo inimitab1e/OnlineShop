@@ -18,19 +18,17 @@ class AuthenticationRepositoryImpl @Inject constructor(
     override suspend fun initRegistration(
         firstName: String,
         lastName: String,
-        email: String,
-        password: String
+        email: String
     ): String {
         return withContext(ioDispatcher) {
-            val isUserExists = appDatabaseDAO.checkIfUserExists(email)
+            val isUserExists = appDatabaseDAO.checkIfUserExists(firstName)
             if (!isUserExists) {
-                preferenceHelper.saveEmail(email)
+                preferenceHelper.saveFirstName(firstName)
                 appDatabaseDAO.tryRegistration(
                     Users(
                         firstName = firstName,
                         lastName = lastName,
-                        email = email,
-                        password = password
+                        email = email
                     )
                 )
                 return@withContext StringConstants.registrationSuccessfulMessage
@@ -40,22 +38,17 @@ class AuthenticationRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun initLogin(email: String, password: String): String {
+    override suspend fun initLogin(firstName: String): String {
         return withContext(ioDispatcher) {
-            val savedPassword = appDatabaseDAO.tryLoginWithPassword(email)
-                ?: return@withContext StringConstants.userDoesNotExists
-            if (password == savedPassword) {
-                preferenceHelper.saveEmail(email)
+            val isUserExists = appDatabaseDAO.checkIfUserExists(firstName)
+            if (isUserExists) {
+                preferenceHelper.saveFirstName(firstName)
                 return@withContext StringConstants.loginSuccessfulMessage
             } else {
-                return@withContext StringConstants.loginFailedMessage
+                return@withContext StringConstants.userDoesNotExists
             }
         }
     }
 
-    override fun deleteLocalUser() {
-        preferenceHelper.clearEmail()
-    }
-
-    override suspend fun clearPreferences() = preferenceHelper.clearEmail()
+    override suspend fun clearPreferences() = preferenceHelper.clearFirstName()
 }

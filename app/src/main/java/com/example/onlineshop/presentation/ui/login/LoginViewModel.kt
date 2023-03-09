@@ -17,9 +17,9 @@ class LoginViewModel @Inject constructor(
     private val _loginResponse = MutableLiveData("")
     val loginResponse: LiveData<String?> get() = _loginResponse
 
-    fun loginWithPassword(email: String, password: String) {
+    fun loginWithPassword(firstName: String) {
         viewModelScope.launch {
-            _loginResponse.postValue(authenticationRepository.initLogin(email, password))
+            _loginResponse.postValue(authenticationRepository.initLogin(firstName))
         }
     }
 }

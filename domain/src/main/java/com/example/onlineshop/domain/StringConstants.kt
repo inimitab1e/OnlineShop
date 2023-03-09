@@ -11,13 +11,12 @@ object StringConstants {
 
     //Authentication response messages
     const val registrationSuccessfulMessage = "Registration successful"
-    const val userAlreadyExistsMessage = "User with this email already exists"
+    const val userAlreadyExistsMessage = "User with this name already exists"
     const val loginSuccessfulMessage = "Login successful"
-    const val loginFailedMessage = "Wrong email or password"
-    const val userDoesNotExists = "User with this email does not exists"
+    const val userDoesNotExists = "User with this name does not exists"
 
     //SharedPreference params
-    const val emailKey = "Email"
+    const val firstNameKey = "FirstName"
 
     //Network
     const val baseUrl = "https://run.mocky.io/v3/"

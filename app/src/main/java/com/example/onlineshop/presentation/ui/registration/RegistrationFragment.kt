@@ -30,10 +30,10 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
     private fun initRegistrationResponseObserver() {
         registrationViewModel.registrationResponse.observe(viewLifecycleOwner) { registrationResponseMessage ->
             if (registrationResponseMessage == StringConstants.registrationSuccessfulMessage) {
-                binding.tvPasswordErrorMessage.isGone = true
+                binding.tvEmailErrorMessage.isGone = true
                 findNavController().navigate(R.id.action_registrationFragment_to_profileFragment)
             } else {
-                with(binding.tvPasswordErrorMessage) {
+                with(binding.tvEmailErrorMessage) {
                     text = registrationResponseMessage
                     isVisible = true
                 }
@@ -65,9 +65,17 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         val firstName = binding.etFirstName.text.toString()
         val secondName = binding.etLastName.text.toString()
         val email = binding.etEmail.text.toString()
-        val password = binding.etPassword.text.toString()
 
-        registrationViewModel.validateAndRegister(firstName, secondName, email, password)
+        clearErrorMessages()
+        registrationViewModel.validateAndRegister(firstName, secondName, email)
+    }
+
+    private fun clearErrorMessages() {
+        with(binding) {
+            tvFirstNameErrorMessage.isGone = true
+            tvLastNameErrorMessage.isGone = true
+            tvEmailErrorMessage.isGone = true
+        }
     }
 
     private fun initValidationErrorsObserver() {
@@ -99,15 +107,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                 }
             } else {
                 binding.tvEmailErrorMessage.isGone = true
-            }
-
-            if (errorMessages.passwordError != null) {
-                with(binding.tvPasswordErrorMessage) {
-                    isVisible = true
-                    text = errorMessages.passwordError
-                }
-            } else {
-                binding.tvPasswordErrorMessage.isGone = true
             }
         }
     }

@@ -5,16 +5,12 @@ interface AuthenticationRepository {
     suspend fun initRegistration(
         firstName: String,
         lastName: String,
-        email: String,
-        password: String
+        email: String
     ): String
 
     suspend fun initLogin(
-        email: String,
-        password: String
+        firstName: String
     ): String
-
-    fun deleteLocalUser()
 
     suspend fun clearPreferences()
 }

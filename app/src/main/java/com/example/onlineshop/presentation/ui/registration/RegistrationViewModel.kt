@@ -14,55 +14,45 @@ class RegistrationViewModel @Inject constructor(
     private val authenticationRepository: AuthenticationRepository
 ) : ViewModel() {
 
-    init {
-        viewModelScope.launch {
-            authenticationRepository.clearPreferences()
-        }
-    }
-
     private val _errorValidationFormsMessage = MutableLiveData<AuthenticationFormState?>()
     val errorValidationFormsMessage: LiveData<AuthenticationFormState?> get() = _errorValidationFormsMessage
 
     private val _registrationResponse = MutableLiveData("")
     val registrationResponse: LiveData<String?> get() = _registrationResponse
 
-    fun validateAndRegister(firstName: String, lastName: String, email: String, password: String) {
-        val emailResult = validationRepository.validateEmail(email)
-        val passwordResult = validationRepository.validatePassword(password)
+    fun validateAndRegister(firstName: String, lastName: String, email: String) {
         val firstNameResult = validationRepository.validateNames(firstName)
         val lastNameResult = validationRepository.validateNames(lastName)
+        val emailResult = validationRepository.validateEmail(email)
 
         val hasError = listOf(
-            emailResult, passwordResult, firstNameResult, lastNameResult
+            firstNameResult, lastNameResult, emailResult
         ).any { !it.successful }
 
         if (hasError) {
             _errorValidationFormsMessage.postValue(
                 AuthenticationFormState(
                     emailError = emailResult.errorMessage,
-                    passwordError = passwordResult.errorMessage,
                     firstNameError = firstNameResult.errorMessage,
                     lastNameError = lastNameResult.errorMessage
                 )
             )
         } else {
-            doRegistration(firstName, lastName, email, password)
+            doRegistration(firstName, lastName, email)
         }
     }
 
     private fun doRegistration(
         firstName: String,
         lastName: String,
-        email: String,
-        password: String
+        email: String
     ) {
         viewModelScope.launch {
             _registrationResponse.postValue(
                 authenticationRepository.initRegistration(
                     firstName,
                     lastName,
-                    email,
-                    password
+                    email
                 )
             )
         }

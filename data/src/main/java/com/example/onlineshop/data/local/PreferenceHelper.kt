@@ -16,14 +16,14 @@ class PreferenceHelper (context: Context) {
         editor = sharedPref.edit()
     }
 
-    fun saveEmail(value: String) {
-        editor.putString(StringConstants.emailKey, value)
+    fun saveFirstName(value: String) {
+        editor.putString(StringConstants.firstNameKey, value)
             .apply()
     }
 
-    fun getEmail(): String? = sharedPref.getString(StringConstants.emailKey, null)
+    fun getFirstName(): String? = sharedPref.getString(StringConstants.firstNameKey, null)
 
-    fun clearEmail() {
+    fun clearFirstName() {
         editor.clear()
             .apply()
     }

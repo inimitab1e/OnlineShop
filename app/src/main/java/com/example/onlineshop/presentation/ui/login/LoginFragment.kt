@@ -49,9 +49,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun doLogin() {
-        val email = binding.etLogEmail.text.toString()
-        val password = binding.etLogPassword.text.toString()
+        val firstName = binding.etLogFirstName.text.toString()
+        clearErrorMessages()
+        loginViewModel.loginWithPassword(firstName)
+    }
 
-        loginViewModel.loginWithPassword(email, password)
+    private fun clearErrorMessages() {
+        binding.tvLoginErrorMessage.isGone = true
     }
 }
