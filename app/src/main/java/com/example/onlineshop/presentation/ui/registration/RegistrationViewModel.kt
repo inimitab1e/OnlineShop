@@ -4,11 +4,9 @@ import androidx.lifecycle.*
 import com.example.onlineshop.data.model.authentication.AuthenticationFormState
 import com.example.onlineshop.domain.repositories.AuthenticationRepository
 import com.example.onlineshop.domain.repositories.ValidationRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class RegistrationViewModel @Inject constructor(
     private val validationRepository: ValidationRepository,
     private val authenticationRepository: AuthenticationRepository

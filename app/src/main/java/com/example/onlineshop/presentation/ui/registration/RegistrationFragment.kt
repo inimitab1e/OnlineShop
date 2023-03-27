@@ -1,23 +1,37 @@
 package com.example.onlineshop.presentation.ui.registration
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.onlineshop.MainApp
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentRegistrationBinding
+import com.example.onlineshop.di.DI
 import com.example.onlineshop.domain.StringConstants
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
     private val binding by viewBinding(FragmentRegistrationBinding::bind)
-    private val registrationViewModel: RegistrationViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val registrationViewModel: RegistrationViewModel by viewModels {
+        viewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        DI.appComponent.injectRegistrationFragment(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,5 +1,6 @@
 package com.example.onlineshop.presentation.ui.home.page2
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -7,25 +8,37 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentItemDetailsBinding
+import com.example.onlineshop.di.DI
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.domain.model.description.ItemDescription
 import com.example.onlineshop.extensions.addOneItem
 import com.example.onlineshop.extensions.addToEndPrice
 import com.example.onlineshop.extensions.removeFromEndPrice
 import com.example.onlineshop.extensions.removeOneItem
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class ItemDetailsFragment : Fragment(R.layout.fragment_item_details) {
 
     private val binding by viewBinding(FragmentItemDetailsBinding::bind)
-    private val itemDetailsViewModel: ItemDetailsViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val itemDetailsViewModel: ItemDetailsViewModel by viewModels {
+        viewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        DI.appComponent.injectItemDetailsFragment(this)
+        super.onAttach(context)
+    }
 
     private val mainImagePagerAdapter: MainImagePagerAdapter by lazy(LazyThreadSafetyMode.NONE) {
         MainImagePagerAdapter()

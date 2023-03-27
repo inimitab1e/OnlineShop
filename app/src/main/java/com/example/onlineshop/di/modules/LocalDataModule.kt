@@ -1,22 +1,23 @@
-package com.example.onlineshop.di
+package com.example.onlineshop.di.modules
 
 import android.content.Context
 import androidx.room.Room
 import com.example.onlineshop.data.local.room.AppDatabase
+import com.example.onlineshop.data.local.room.AppDatabaseDAO
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
+object LocalDataModule {
 
     @Provides
     @Singleton
-    fun provideLocalDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
+    fun provideAppDatabaseDao(db: AppDatabase): AppDatabaseDAO = db.AppDatabaseDAO()
+
+    @Provides
+    @Singleton
+    fun provideLocalDatabase(context: Context) = Room.databaseBuilder(
         context.applicationContext,
         AppDatabase::class.java, "online_shop.db"
     ).allowMainThreadQueries()

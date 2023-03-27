@@ -1,19 +1,16 @@
-package com.example.onlineshop.di
+package com.example.onlineshop.di.modules
 
 import com.example.onlineshop.data.network.ApiService
 import com.example.onlineshop.domain.StringConstants
 import com.example.onlineshop.data.network.utils.retrofit.ResultAdapterFactory
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides

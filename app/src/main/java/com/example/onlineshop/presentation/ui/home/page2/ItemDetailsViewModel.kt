@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.onlineshop.domain.model.description.ItemDescription
 import com.example.onlineshop.domain.repositories.ItemDescriptionRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-@HiltViewModel
 class ItemDetailsViewModel @Inject constructor(
     private val itemDescriptionRepository: ItemDescriptionRepository
 ) : ViewModel() {

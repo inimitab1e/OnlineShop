@@ -1,5 +1,6 @@
 package com.example.onlineshop.presentation.ui.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,15 +8,16 @@ import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.clear
 import coil.load
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentProfileBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.onlineshop.di.DI
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     companion object {
@@ -23,7 +25,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private val binding by viewBinding(FragmentProfileBinding::bind)
-    private val profileViewModel: ProfileViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val profileViewModel: ProfileViewModel by viewModels {
+        viewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        DI.appComponent.injectProfileFragment(this)
+        super.onAttach(context)
+    }
 
     private val pickImage =
         registerForActivityResult(ActivityResultContracts.GetContent()) { contentUri ->

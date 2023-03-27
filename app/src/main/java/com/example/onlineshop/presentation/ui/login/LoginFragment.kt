@@ -1,23 +1,36 @@
 package com.example.onlineshop.presentation.ui.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineshop.R
 import com.example.onlineshop.databinding.FragmentLoginBinding
+import com.example.onlineshop.di.DI
 import com.example.onlineshop.domain.StringConstants
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
-    private val loginViewModel: LoginViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val loginViewModel: LoginViewModel by viewModels {
+        viewModelFactory
+    }
+
+    override fun onAttach(context: Context) {
+        DI.appComponent.injectLoginFragment(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -1,14 +1,11 @@
-package com.example.onlineshop.di
+package com.example.onlineshop.di.modules
 
 import com.example.onlineshop.data.repositories.*
 import com.example.onlineshop.domain.repositories.*
 import dagger.Binds
 import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
     @Binds

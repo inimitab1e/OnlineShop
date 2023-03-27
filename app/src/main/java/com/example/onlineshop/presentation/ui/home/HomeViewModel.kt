@@ -8,11 +8,9 @@ import com.example.onlineshop.domain.model.latest.Latest
 import com.example.onlineshop.domain.model.sale.FlashSale
 import com.example.onlineshop.domain.model.search.SearchResponse
 import com.example.onlineshop.domain.repositories.HomePageRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-@HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homePageRepository: HomePageRepository
 ) : ViewModel() {
