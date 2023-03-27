@@ -7,7 +7,7 @@ Online mobile shop.
 - RecyclerView
 - ViewPager2
 - Retrofit
-- Hilt
+- Dagger2
 - LiveData
 - Serialization
 - Coroutines
